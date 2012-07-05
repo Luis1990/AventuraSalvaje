@@ -1,0 +1,25 @@
+#MyEclipse Hibernate Properties
+#Tue Jul 03 22:01:39 CDT 2012
+sessionFactoryName=com.aventurasalvaje.hibernate.HibernateSessionFactory
+genBasicCompId=false
+profile=
+daoSFId=
+version=3.3
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+libInstallFolder=WebContent/WEB-INF/lib
+addLibs2Project=false
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=
+configFile=/AventuraSalvaje/src/com/aventurasalvaje/hibernate/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=false
+baseDaoClass=BaseHibernateDAO
