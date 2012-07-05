@@ -1,0 +1,17 @@
+<?page title="Consulta" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Renta" border="normal" apply="com.aventurasalvaje.renta.RentaCtrl">
+
+<button id="Inicio" label="Iniciar" visible="true" /><space />
+
+<button id="Parar" label="parar" visible="false"  /><space />
+
+<label id="Texto" value="OCUPADO" visible="false" /><space />
+
+<popup id="Comienza"><button id="Confirma" label="Aceptar" ></button>
+<space/><label id="HoraI" value="HoraI" /></popup>
+
+<popup id="Info"><button id="Revisa" label="Aceptar"></button></popup>
+
+</window>
+</zk>
