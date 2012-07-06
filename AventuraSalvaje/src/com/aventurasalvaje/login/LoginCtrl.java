@@ -26,7 +26,7 @@ public class LoginCtrl extends GenericForwardComposer {
 
 	/** Componente Textbox de la zul nombrado con el id de la zul*/
 	private Textbox contrasena;
-	/** Componente Textbox de la zul nombrado con el id de la zul*/
+	/** Componente Textbooks de la zul nombrado con el id de la zul*/
 	private Textbox usuario;
 	/** Componente Button de la zul nombrado con el id de la zul*/
 	private Button logear;
