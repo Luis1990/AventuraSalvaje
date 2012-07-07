@@ -3,6 +3,8 @@
  */
 package com.aventurasalvaje.renta;
 
+import java.util.Calendar;
+
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
@@ -22,6 +24,7 @@ public class RentaCtrl extends GenericForwardComposer {
 	private Label Texto;
 	private Button Parar;
 	private Button Inicio;
+	private Label HoraI;
 
 	/**
 	*
@@ -39,6 +42,11 @@ public class RentaCtrl extends GenericForwardComposer {
 	Parar.setVisible(true);
 	Inicio.setVisible(false);
 	Texto.setVisible(true);
+	Calendar hora=Calendar.getInstance();
+	int h=hora.HOUR;
+	int m=hora.MINUTE;	
+	String horaInicial=h+":"+m;
+	HoraI.setValue(horaInicial);
 	}
 	
 	public void onClick$Parar(){
