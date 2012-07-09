@@ -3,7 +3,7 @@ package com.aventurasalvaje.login;
 import java.util.List;
 
 import com.aventurasalvaje.pojos.Usuario;
-import com.aventurasalvaje.pojos.UsuarioDAO;
+import com.aventurasalvaje.dao.UsuarioDAO;
 
 
 public class LoginBo {
@@ -30,18 +30,18 @@ public class LoginBo {
 	 * 
 	 */
 	public boolean usurioExiste(String nombreUsuario){
-		//Se hace el llamado de un metodo que existe dentro del UsuarioDAO
-		//Regresa un objeto del tipo Pojo de Usuario 
-		Usuario usuario=usuarioDao.findByUsuario(nombreUsuario);
-		//Se revisa que el usuario no este nulo
-		if(usuario==null){
-			// si es nulo ser retorna un falso
-			return false;
-		}else{
-			// si no es nulo se retorna un verdadero
-			return true;
-		}
-		
+//		//Se hace el llamado de un metodo que existe dentro del UsuarioDAO
+//		//Regresa un objeto del tipo Pojo de Usuario 
+//		Usuario usuario=usuarioDao.findByUsuario(nombreUsuario);
+//		//Se revisa que el usuario no este nulo
+//		if(usuario==null){
+//			// si es nulo ser retorna un falso
+//			return false;
+//		}else{
+//			// si no es nulo se retorna un verdadero
+//			return true;
+//		}
+		return false;
 	}
 	/**
 	 * Metodo que regresa todos los usuarios existentes en la base de datos
