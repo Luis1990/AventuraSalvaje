@@ -113,6 +113,7 @@ public class RentaCtrl extends GenericForwardComposer {
 						mensaje.setValue("");
 						HoraF.setValue(getHora());
 						Producto2.setValue(productoNombre);
+						//rentaBo.Save(idRenta,Calendar.getInstance());
 					}
 				});
 				parar.setParent(cell2);
