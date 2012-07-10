@@ -1,11 +1,13 @@
 package com.aventurasalvaje.pojos;
 
 import java.sql.Time;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,8 +24,8 @@ public class Renta implements java.io.Serializable {
 
 	private Integer idRenta;
 	private ProductoExistencia productoExistencia;
-	private Time horaEntrada;
-	private Time horaSalida;
+	private Date horaEntrada;
+	private Date horaSalida;
 
 	// Constructors
 
@@ -41,7 +43,7 @@ public class Renta implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idRenta", unique = true, nullable = false)
 	public Integer getIdRenta() {
 		return this.idRenta;
@@ -62,20 +64,20 @@ public class Renta implements java.io.Serializable {
 	}
 
 	@Column(name = "hora_entrada", nullable = false, length = 8)
-	public Time getHoraEntrada() {
+	public Date getHoraEntrada() {
 		return this.horaEntrada;
 	}
 
-	public void setHoraEntrada(Time horaEntrada) {
+	public void setHoraEntrada(Date horaEntrada) {
 		this.horaEntrada = horaEntrada;
 	}
 
-	@Column(name = "hora_salida", nullable = false, length = 8)
-	public Time getHoraSalida() {
+	@Column(name = "hora_salida", nullable=true)
+	public Date getHoraSalida() {
 		return this.horaSalida;
 	}
 
-	public void setHoraSalida(Time horaSalida) {
+	public void setHoraSalida(Date horaSalida) {
 		this.horaSalida = horaSalida;
 	}
 
