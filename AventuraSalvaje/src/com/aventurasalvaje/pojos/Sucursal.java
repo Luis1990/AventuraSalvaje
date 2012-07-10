@@ -1,11 +1,34 @@
 package com.aventurasalvaje.pojos;
 
+import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Sucursal entity. @author MyEclipse Persistence Tools
  */
-public class Sucursal extends AbstractSucursal implements java.io.Serializable {
+@Entity
+@Table(name = "sucursal", catalog = "aventurasalvaje")
+public class Sucursal implements java.io.Serializable {
+
+	// Fields
+
+	private Integer idSucursal;
+	private String direccion;
+	private String nombre;
+	private Long telefono;
+	private String contacto;
+	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
+	private Set<Inventario> inventarios = new HashSet<Inventario>(0);
+	private Set<Inventario> inventarios_1 = new HashSet<Inventario>(0);
 
 	// Constructors
 
@@ -15,14 +38,97 @@ public class Sucursal extends AbstractSucursal implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Sucursal(String direccion, Long telefono, String contacto) {
-		super(direccion, telefono, contacto);
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.contacto = contacto;
 	}
 
 	/** full constructor */
 	public Sucursal(String direccion, String nombre, Long telefono,
-			String contacto, Set usuarios, Set inventarios, Set inventarios_1) {
-		super(direccion, nombre, telefono, contacto, usuarios, inventarios,
-				inventarios_1);
+			String contacto, Set<Usuario> usuarios,
+			Set<Inventario> inventarios, Set<Inventario> inventarios_1) {
+		this.direccion = direccion;
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.contacto = contacto;
+		this.usuarios = usuarios;
+		this.inventarios = inventarios;
+		this.inventarios_1 = inventarios_1;
+	}
+
+	// Property accessors
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "idSucursal", unique = true, nullable = false)
+	public Integer getIdSucursal() {
+		return this.idSucursal;
+	}
+
+	public void setIdSucursal(Integer idSucursal) {
+		this.idSucursal = idSucursal;
+	}
+
+	@Column(name = "direccion", nullable = false, length = 45)
+	public String getDireccion() {
+		return this.direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	@Column(name = "nombre", length = 45)
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Column(name = "telefono", nullable = false, precision = 10, scale = 0)
+	public Long getTelefono() {
+		return this.telefono;
+	}
+
+	public void setTelefono(Long telefono) {
+		this.telefono = telefono;
+	}
+
+	@Column(name = "contacto", nullable = false, length = 45)
+	public String getContacto() {
+		return this.contacto;
+	}
+
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sucursal")
+	public Set<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sucursal")
+	public Set<Inventario> getInventarios() {
+		return this.inventarios;
+	}
+
+	public void setInventarios(Set<Inventario> inventarios) {
+		this.inventarios = inventarios;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sucursal")
+	public Set<Inventario> getInventarios_1() {
+		return this.inventarios_1;
+	}
+
+	public void setInventarios_1(Set<Inventario> inventarios_1) {
+		this.inventarios_1 = inventarios_1;
 	}
 
 }

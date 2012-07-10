@@ -7,28 +7,27 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="dialect">
-			org.hibernate.dialect.MySQLDialect
-		</property>
+		<property name="myeclipse.connection.profile">Sql</property>
 		<property name="connection.url">
-			jdbc:mysql://localhost/aventurasalvaje
+			jdbc:mysql://localhost:3306/aventurasalvaje
 		</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">Ivonne12</property>
+		<property name="connection.password">root</property>
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-		<property name="myeclipse.connection.profile">MySql</property>
-		<mapping resource="com/aventurasalvaje/pojos/Cobros.hbm.xml" />
-		<mapping resource="com/aventurasalvaje/pojos/Sucursal.hbm.xml" />
-		<mapping resource="com/aventurasalvaje/pojos/Renta.hbm.xml" />
-		<mapping resource="com/aventurasalvaje/pojos/Catalogo.hbm.xml" />
-		<mapping
-			resource="com/aventurasalvaje/pojos/Inventario.hbm.xml" />
-		<mapping resource="com/aventurasalvaje/pojos/Usuario.hbm.xml" />
-		<mapping
-			resource="com/aventurasalvaje/pojos/ProductoExistencia.hbm.xml" />
-		<mapping resource="com/aventurasalvaje/pojos/Precios.hbm.xml" />
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		
+		<mapping class="com.aventurasalvaje.pojos.Cobros" />
+		<mapping class="com.aventurasalvaje.pojos.Sucursal" />
+		<mapping class="com.aventurasalvaje.pojos.Renta" />
+		<mapping class="com.aventurasalvaje.pojos.Catalogo" />
+		<mapping class="com.aventurasalvaje.pojos.Inventario" />
+		<mapping class="com.aventurasalvaje.pojos.Usuario" />
+		<mapping class="com.aventurasalvaje.pojos.ProductoExistencia" />
+		<mapping class="com.aventurasalvaje.pojos.Precios" />
 
 	</session-factory>
 

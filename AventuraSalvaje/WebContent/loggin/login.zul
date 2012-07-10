@@ -1,6 +1,6 @@
 <?page title="Login" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="Login" border="normal" apply="com.aventurasalvaje.login.LoginCtrl" width="300">
+<window title="Login" border="normal" apply="com.aventurasalvaje.login.LoginCtrl" width="800">
 <hbox >
 <textbox id="usuario"/>
 <textbox id="contrasena"/>

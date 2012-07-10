@@ -6,6 +6,8 @@ package com.aventurasalvaje.login;
 import java.util.List;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Label;
@@ -26,7 +28,7 @@ public class LoginCtrl extends GenericForwardComposer {
 
 	/** Componente Textbox de la zul nombrado con el id de la zul*/
 	private Textbox contrasena;
-	/** Componente Textbox de la zul nombrado con el id de la zul*/
+	/** Componente Textbooks de la zul nombrado con el id de la zul*/
 	private Textbox usuario;
 	/** Componente Button de la zul nombrado con el id de la zul*/
 	private Button logear;
@@ -75,7 +77,7 @@ public class LoginCtrl extends GenericForwardComposer {
 			public void render(Listitem item, Object data, int arg2)
 					throws Exception {
 					//se hace unca convercion del objeto data(contiene cada uno de los objetos de la lista[del model]y es el objeto iterado
-					Usuario usuario=(Usuario) data;
+					final Usuario usuario=(Usuario) data;
 					//se setea el valor de el item(cada objeto dentro del listBox)
 					//se usa el metodo set igual q en la mayoria de los objetos pertenecientes a zk
 					item.setValue(usuario);
@@ -90,8 +92,17 @@ public class LoginCtrl extends GenericForwardComposer {
 					// y se le setea el padre al que pertenecen 
 					new Label(usuario.getIdUsuario().toString()).setParent(cell0);// este dato se recupera Como Integer pero se combierte a String con el .toString()
 					new Label(usuario.getUsuario()).setParent(cell1);
-					new Label(usuario.getPassword()).setParent(cell2);
 					
+					Button boton=new Button();
+					boton.setLabel("iniciar");
+					boton.addEventListener("onClick", new EventListener<Event>() {
+
+						@Override
+						public void onEvent(Event arg0) throws Exception {
+							alert(usuario.getUsuario());
+						}
+					});
+					boton.setParent(cell2);
 					//se setea los padres de cada celda
 					cell0.setParent(item);
 					cell1.setParent(item);
