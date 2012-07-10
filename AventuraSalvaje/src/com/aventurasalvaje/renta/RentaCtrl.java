@@ -5,6 +5,7 @@ package com.aventurasalvaje.renta;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.zkoss.zk.ui.Component;
@@ -80,6 +81,7 @@ public class RentaCtrl extends GenericForwardComposer {
 				mensaje.setValue("");
 				hora.setParent(cell4);
 				mensaje.setParent(cell3);
+				final int idProducto=producto.getIdProductoExistencia();
 				
 				final Button inicio=new Button();
 				final Button parar=new Button();
@@ -95,6 +97,7 @@ public class RentaCtrl extends GenericForwardComposer {
 						mensaje.setValue("Ocupado");
 						HoraI.setValue(getHora());
 						Producto.setValue(productoNombre);
+						rentaBo.Save(idProducto,Calendar.getInstance());
 					}
 				});
 				inicio.setParent(cell2);
