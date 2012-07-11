@@ -1,0 +1,18 @@
+<?page title="Consulta" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+<window title="Renta" border="normal" apply="com.aventurasalvaje.renta.RentaCtrl" width="800">
+<listbox id="listaProducto">
+	<listhead>
+		<listheader label="Imagen"/>
+		<listheader label="Nombre"/>
+		<listheader label=""/>
+		<listheader label="Estado"/>
+		<listheader label=""/>
+	</listhead>
+</listbox>
+<popup id="Comienza" height="300" width="300"><label id="Producto"/><label value="Hora de Inicio"/><label id="HoraI" value=""/><button id="Confirma" label="Aceptar" ></button></popup>
+
+<popup id="Info" height="300" width="300"><label id="Producto2"/><label value="Hora de Inicio"/><label id="HoraI2"/><label value="Hora de Termino"/><label id="HoraF"/><label id="Comparacion"/><button id="Revisa" label="Aceptar"></button></popup>
+</window>
+</zk>

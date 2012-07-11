@@ -35,12 +35,14 @@ public class RentaCtrl extends GenericForwardComposer {
 	private Button Confirma;
 	private Popup Comienza;
 	private Label HoraI;
+	private Label HoraI2;
 	private Label HoraF;
 	private RentaBo rentaBo;
 	private Listbox listaProducto;
 	private Label Producto;
 	private Label Producto2;
-
+	private Label Comparacion;
+	int idSucursal;
 	/**
 	*
 	*
@@ -98,6 +100,7 @@ public class RentaCtrl extends GenericForwardComposer {
 						hora.setValue(getHora());
 						mensaje.setValue("Ocupado");
 						HoraI.setValue(getHora());
+						HoraI2.setValue(getHora());
 						Producto.setValue(productoNombre);
 						rentaBo.Save(idProducto,Calendar.getInstance());
 					}
@@ -109,15 +112,29 @@ public class RentaCtrl extends GenericForwardComposer {
 					@Override
 					public void onEvent(Event arg0) throws Exception {
 						// TODO Auto-generated method stub
-						int idRenta=rentaBo.Renta(idProducto).getIdRenta();
+						Renta renta=rentaBo.Renta(idProducto);
+						int idRenta=renta.getIdRenta();
+						Date horaI=renta.getHoraEntrada();
+						Calendar inicialHora=Calendar.getInstance();
+						inicialHora.setTime(horaI);
+						Calendar finalHora=Calendar.getInstance();
+						long hor1 = inicialHora.getTimeInMillis();
+						long hor2 = finalHora.getTimeInMillis();
+						long diff=hor2-hor1;
+						long diffMinutes = diff / (60 * 1000);				
+//						long comp=diffMinutes;
+//						String compara="$ "+comp;
+//						Comparacion.setValue(compara);
+						
+						
 						Info.open(Info);
 						cambiaVisibilidad2(parar,inicio);
 						hora.setValue("");
 						mensaje.setValue("");
 						HoraF.setValue(getHora());
 						Producto2.setValue(productoNombre);
-					//	rentaBo.Save(idProducto,Calendar.getInstance());
-						rentaBo.Update(idRenta,Calendar.getInstance());
+						rentaBo.Update(idRenta,finalHora);
+						
 					}
 				});
 				
@@ -145,30 +162,13 @@ public class RentaCtrl extends GenericForwardComposer {
 	public String getHora(){
 		Calendar hora=Calendar.getInstance();
 		int h =hora.get(Calendar.HOUR);
+		String hor=h==0?"12":String.valueOf(h);
 		int m = hora.get(Calendar.MINUTE);
 		String x=(hora.get(Calendar.AM_PM))!=1?"am":"pm";
 		String min=m<10?"0"+m:String.valueOf(m);
-		String horaInicio=h+":"+min+" "+x;
+		String horaInicio=hor+":"+min+" "+x;
 		return horaInicio;
 	}
-	public Date getcompara(){
-		return null;
-	}
-//	public void onClick$Inicio(){
-//	Comienza.open(Comienza);
-//	Parar.setVisible(true);
-//	Inicio.setVisible(false);
-//	Texto.setVisible(true);
-//	HoraI.setValue(getHora());
-//	}
-	
-//	public void onClick$Parar(){
-//	Info.open(Info);
-//	Parar.setVisible(false);
-//	Inicio.setVisible(true);
-//	HoraF.setValue(getHora());
-//	}
-	
 	
 	public void onClick$Revisa(){
 	Info.close();	
