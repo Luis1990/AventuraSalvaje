@@ -3,6 +3,7 @@
  */
 package com.aventurasalvaje.renta;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,6 +24,7 @@ import org.zkoss.zul.Popup;
 
 import com.aventurasalvaje.pojos.ProductoExistencia;
 import com.aventurasalvaje.pojos.Renta;
+import com.sun.xml.internal.fastinfoset.util.StringArray;
 
 /**
  * @author carlos
@@ -42,7 +44,8 @@ public class RentaCtrl extends GenericForwardComposer {
 	private Label Producto;
 	private Label Producto2;
 	private Label Comparacion;
-	int idSucursal;
+	int idSucursal=2;
+	BigDecimal precio=new BigDecimal(0);
 	/**
 	*
 	*
@@ -52,6 +55,7 @@ public class RentaCtrl extends GenericForwardComposer {
 		super.doAfterCompose(comp);
 		// TODO Auto-generated method stub
 		rentaBo=new RentaBo();
+		precio=new BigDecimal(rentaBo.precios(idSucursal).getCostoTotal());
 		List<ProductoExistencia> productos=rentaBo.getProductos();
 		List<ProductoExitenciaDTO> ltPro=new ArrayList<ProductoExitenciaDTO>();
 
@@ -112,7 +116,7 @@ public class RentaCtrl extends GenericForwardComposer {
 					@Override
 					public void onEvent(Event arg0) throws Exception {
 						// TODO Auto-generated method stub
-						Renta renta=rentaBo.Renta(idProducto);
+						Renta renta=rentaBo.renta(idProducto);
 						int idRenta=renta.getIdRenta();
 						Date horaI=renta.getHoraEntrada();
 						Calendar inicialHora=Calendar.getInstance();
@@ -121,10 +125,10 @@ public class RentaCtrl extends GenericForwardComposer {
 						long hor1 = inicialHora.getTimeInMillis();
 						long hor2 = finalHora.getTimeInMillis();
 						long diff=hor2-hor1;
-						long diffMinutes = diff / (60 * 1000);				
-//						long comp=diffMinutes;
-//						String compara="$ "+comp;
-//						Comparacion.setValue(compara);
+						long diffMinutes = diff / (60 * 1000);
+						Integer cobro=cobro(diffMinutes);
+						String compara="$ "+cobro;
+						Comparacion.setValue(compara);
 						
 						
 						Info.open(Info);
@@ -168,6 +172,18 @@ public class RentaCtrl extends GenericForwardComposer {
 		String min=m<10?"0"+m:String.valueOf(m);
 		String horaInicio=hor+":"+min+" "+x;
 		return horaInicio;
+	}
+	
+	public Integer cobro(long diffMinutes){
+//		precio.toBigInteger();
+		Integer precio=0;
+		String cobro="20,30,45,100";
+		String[]a=cobro.split(",");
+		if(diffMinutes<5){
+			precio=Integer.valueOf(a[0]);
+		}
+		return precio;
+		
 	}
 	
 	public void onClick$Revisa(){

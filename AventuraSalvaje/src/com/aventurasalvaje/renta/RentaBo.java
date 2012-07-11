@@ -1,11 +1,12 @@
 package com.aventurasalvaje.renta;
 
-import java.sql.Time;
 import java.util.Calendar;
 import java.util.List;
 
+import com.aventurasalvaje.dao.PreciosDAO;
 import com.aventurasalvaje.dao.ProductoExistenciaDAO;
 import com.aventurasalvaje.dao.RentaDAO;
+import com.aventurasalvaje.pojos.Precios;
 import com.aventurasalvaje.pojos.ProductoExistencia;
 import com.aventurasalvaje.pojos.Renta;
 
@@ -13,6 +14,7 @@ public class RentaBo {
 
 	public ProductoExistenciaDAO productoexistenciaDao;
 	public RentaDAO rentaDao = new RentaDAO();
+	public PreciosDAO PreciosDao = new PreciosDAO();
 	
 	public RentaBo() {
 		//se inicializa la clase ProductoExistenciaDAO para su uso a lo largo de su instancia
@@ -25,7 +27,7 @@ public class RentaBo {
 		return productoexistenciaDao.findAll();
 	}
 	
-	public Renta Renta(int idProductoExistencia){
+	public Renta renta(int idProductoExistencia){
 //		Renta renta=rentaDao.findByidproducto(idProductoExistencia);
 		return rentaDao.findByidproducto(idProductoExistencia);
 		
@@ -44,6 +46,10 @@ public class RentaBo {
 		Renta renta=rentaDAO.findByid(idrenta);
 		renta.setHoraSalida(fin.getTime());
 		rentaDAO.update(renta);
+	}
+	
+	public Precios precios(int idSucursal){
+		return PreciosDao.findByidsucursal(idSucursal);
 	}
 	
 }
