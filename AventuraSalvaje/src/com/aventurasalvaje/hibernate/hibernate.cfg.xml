@@ -19,7 +19,7 @@
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
-		
+
 		<mapping class="com.aventurasalvaje.pojos.Cobros" />
 		<mapping class="com.aventurasalvaje.pojos.Sucursal" />
 		<mapping class="com.aventurasalvaje.pojos.Renta" />

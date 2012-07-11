@@ -12,7 +12,7 @@ import com.aventurasalvaje.pojos.Renta;
 public class RentaBo {
 
 	public ProductoExistenciaDAO productoexistenciaDao;
-	public RentaDAO rentaDao;
+	public RentaDAO rentaDao = new RentaDAO();
 	
 	public RentaBo() {
 		//se inicializa la clase ProductoExistenciaDAO para su uso a lo largo de su instancia
@@ -25,9 +25,10 @@ public class RentaBo {
 		return productoexistenciaDao.findAll();
 	}
 	
-	public Renta Renta(int idrenta){
-		Renta renta=rentaDao.findByid(idrenta);
-		return rentaDao.findByid(idrenta);
+	public Renta Renta(int idProductoExistencia){
+//		Renta renta=rentaDao.findByidproducto(idProductoExistencia);
+		return rentaDao.findByidproducto(idProductoExistencia);
+		
 	}
 	
 	public void Save(Integer idproducto,Calendar inicio){
@@ -36,6 +37,13 @@ public class RentaBo {
 		renta.setHoraEntrada(inicio.getTime());
 		renta.setProductoExistencia(productoexistenciaDao.findByid(idproducto));
 		rentaDao.save(renta);
+	}
+	
+	public void Update(Integer idrenta,Calendar fin){
+		RentaDAO rentaDAO=new RentaDAO();
+		Renta renta=rentaDAO.findByid(idrenta);
+		renta.setHoraSalida(fin.getTime());
+		rentaDAO.update(renta);
 	}
 	
 }

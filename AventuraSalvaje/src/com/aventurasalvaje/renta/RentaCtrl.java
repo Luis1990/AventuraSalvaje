@@ -22,6 +22,7 @@ import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Popup;
 
 import com.aventurasalvaje.pojos.ProductoExistencia;
+import com.aventurasalvaje.pojos.Renta;
 
 /**
  * @author carlos
@@ -83,6 +84,7 @@ public class RentaCtrl extends GenericForwardComposer {
 				mensaje.setParent(cell3);
 				final int idProducto=producto.getIdProductoExistencia();
 				
+				
 				final Button inicio=new Button();
 				final Button parar=new Button();
 				parar.setVisible(false);
@@ -107,15 +109,19 @@ public class RentaCtrl extends GenericForwardComposer {
 					@Override
 					public void onEvent(Event arg0) throws Exception {
 						// TODO Auto-generated method stub
+						int idRenta=rentaBo.Renta(idProducto).getIdRenta();
 						Info.open(Info);
 						cambiaVisibilidad2(parar,inicio);
 						hora.setValue("");
 						mensaje.setValue("");
 						HoraF.setValue(getHora());
 						Producto2.setValue(productoNombre);
-						//rentaBo.Save(idRenta,Calendar.getInstance());
+					//	rentaBo.Save(idProducto,Calendar.getInstance());
+						rentaBo.Update(idRenta,Calendar.getInstance());
 					}
 				});
+				
+				
 				parar.setParent(cell2);
 				
 				cell0.setParent(item);
@@ -135,6 +141,7 @@ public class RentaCtrl extends GenericForwardComposer {
 		parar.setVisible(false);
 		inicio.setVisible(true);
 	}
+	
 	public String getHora(){
 		Calendar hora=Calendar.getInstance();
 		int h =hora.get(Calendar.HOUR);
@@ -143,6 +150,9 @@ public class RentaCtrl extends GenericForwardComposer {
 		String min=m<10?"0"+m:String.valueOf(m);
 		String horaInicio=h+":"+min+" "+x;
 		return horaInicio;
+	}
+	public Date getcompara(){
+		return null;
 	}
 //	public void onClick$Inicio(){
 //	Comienza.open(Comienza);
