@@ -1,6 +1,24 @@
-<?page title="Alta Usuario" contentType="text/html;charset=UTF-8"?>
+<?page title="Alta Usuarios" contentType="text/html;charset=UTF-8"?>
 <zk>
 <window title="Alta Usuario" border="normal">
-Pollo putitn
+<window title="Alta Usuario" border="normal" apply="com.aventurasalvaje.altaUsuarios.AltaUsuariosCtrl" width="400">
+<hbox>
+<listbox id="listaUsuario" checkmark="true" multiple="true">
+	<listhead>
+		<listheader label=""  sort="auto" width="50px"/>
+		<listheader label="Nombre" sort="auto"   />
+		<listheader label="Password" sort="auto" />
+	</listhead>
+</listbox>
+</hbox>
+
+<space orient="vertical" width="50px"/>
+<button id="eliminar" label="Eliminar"/>
+<space orient="vertical"/>
+<button id="modificar" label="Modificar"/>
+<space orient="vertical"/>
+<button id="nuevo" label="Nuevo"/>
+
+>>>>>>> branch 'refs/heads/master' of https://github.com/Luis1990/AventuraSalvaje.git
 </window>
 </zk>
