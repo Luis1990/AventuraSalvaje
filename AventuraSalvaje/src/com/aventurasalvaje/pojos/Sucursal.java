@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,6 +24,7 @@ public class Sucursal implements java.io.Serializable {
 	// Fields
 
 	private Integer idSucursal;
+	private Precios precios;
 	private String direccion;
 	private String nombre;
 	private Long telefono;
@@ -44,9 +47,10 @@ public class Sucursal implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Sucursal(String direccion, String nombre, Long telefono,
-			String contacto, Set<Usuario> usuarios,
+	public Sucursal(Precios precios, String direccion, String nombre,
+			Long telefono, String contacto, Set<Usuario> usuarios,
 			Set<Inventario> inventarios, Set<Inventario> inventarios_1) {
+		this.precios = precios;
 		this.direccion = direccion;
 		this.nombre = nombre;
 		this.telefono = telefono;
@@ -66,6 +70,16 @@ public class Sucursal implements java.io.Serializable {
 
 	public void setIdSucursal(Integer idSucursal) {
 		this.idSucursal = idSucursal;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idPrecio")
+	public Precios getPrecios() {
+		return this.precios;
+	}
+
+	public void setPrecios(Precios precios) {
+		this.precios = precios;
 	}
 
 	@Column(name = "direccion", nullable = false, length = 45)

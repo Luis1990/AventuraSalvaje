@@ -20,6 +20,14 @@
 			org.hibernate.dialect.MySQLDialect
 		</property>
 
+		<property name="connection.password">root</property>
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+
 		<mapping class="com.aventurasalvaje.pojos.Cobros" />
 		<mapping class="com.aventurasalvaje.pojos.Sucursal" />
 		<mapping class="com.aventurasalvaje.pojos.Renta" />

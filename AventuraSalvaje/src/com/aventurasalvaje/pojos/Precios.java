@@ -1,13 +1,16 @@
 package com.aventurasalvaje.pojos;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,7 +28,8 @@ public class Precios implements java.io.Serializable {
 	private Integer idSucursal;
 	private Long costoTotal;
 	private Long costoExtra;
-	private Set<Cobros> cobroses = new HashSet<Cobros>(0);
+	private Date fechaVigencia;
+	private Set<Sucursal> sucursals = new HashSet<Sucursal>(0);
 
 	// Constructors
 
@@ -33,13 +37,19 @@ public class Precios implements java.io.Serializable {
 	public Precios() {
 	}
 
+	/** minimal constructor */
+	public Precios(Date fechaVigencia) {
+		this.fechaVigencia = fechaVigencia;
+	}
+
 	/** full constructor */
 	public Precios(Integer idSucursal, Long costoTotal, Long costoExtra,
-			Set<Cobros> cobroses) {
+			Date fechaVigencia, Set<Sucursal> sucursals) {
 		this.idSucursal = idSucursal;
 		this.costoTotal = costoTotal;
 		this.costoExtra = costoExtra;
-		this.cobroses = cobroses;
+		this.fechaVigencia = fechaVigencia;
+		this.sucursals = sucursals;
 	}
 
 	// Property accessors
@@ -81,13 +91,22 @@ public class Precios implements java.io.Serializable {
 		this.costoExtra = costoExtra;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "precios")
-	public Set<Cobros> getCobroses() {
-		return this.cobroses;
+	@Column(name = "fecha_vigencia", nullable = false, length = 19)
+	public Date getFechaVigencia() {
+		return this.fechaVigencia;
 	}
 
-	public void setCobroses(Set<Cobros> cobroses) {
-		this.cobroses = cobroses;
+	public void setFechaVigencia(Date fechaVigencia) {
+		this.fechaVigencia = fechaVigencia;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "precios")
+	public Set<Sucursal> getSucursals() {
+		return this.sucursals;
+	}
+
+	public void setSucursals(Set<Sucursal> sucursals) {
+		this.sucursals = sucursals;
 	}
 
 }

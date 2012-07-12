@@ -21,7 +21,6 @@ public class Cobros implements java.io.Serializable {
 	// Fields
 
 	private Integer idCobros;
-	private Precios precios;
 	private Usuario usuario;
 	private Timestamp fecha;
 
@@ -32,8 +31,7 @@ public class Cobros implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Cobros(Precios precios, Usuario usuario, Timestamp fecha) {
-		this.precios = precios;
+	public Cobros(Usuario usuario, Timestamp fecha) {
 		this.usuario = usuario;
 		this.fecha = fecha;
 	}
@@ -48,16 +46,6 @@ public class Cobros implements java.io.Serializable {
 
 	public void setIdCobros(Integer idCobros) {
 		this.idCobros = idCobros;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idPrecios")
-	public Precios getPrecios() {
-		return this.precios;
-	}
-
-	public void setPrecios(Precios precios) {
-		this.precios = precios;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
