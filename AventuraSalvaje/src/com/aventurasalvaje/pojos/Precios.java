@@ -91,7 +91,7 @@ public class Precios implements java.io.Serializable {
 		this.costoExtra = costoExtra;
 	}
 
-	@Column(name = "fecha_vigencia", nullable = false, length = 19)
+	@Column(name = "fecha_vigencia", nullable = false, length = 10)
 	public Date getFechaVigencia() {
 		return this.fechaVigencia;
 	}

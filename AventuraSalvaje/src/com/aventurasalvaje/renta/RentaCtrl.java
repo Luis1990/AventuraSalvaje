@@ -47,9 +47,9 @@ public class RentaCtrl extends GenericForwardComposer {
 	int idSucursal=2;
 	BigDecimal precio=new BigDecimal(0);
 	/**
-	*
-	*
-	*/
+	 *
+	 *
+	 */
 	@Override
 	public void doAfterCompose(Component comp)throws Exception{
 		super.doAfterCompose(comp);
@@ -62,8 +62,8 @@ public class RentaCtrl extends GenericForwardComposer {
 		for (ProductoExistencia productoExistencia : productos) {
 			ltPro.add(new ProductoExitenciaDTO(productoExistencia));
 		}
-		
-		
+
+
 		ListModelList model=new ListModelList(ltPro);
 		listaProducto.setModel(model);
 		listaProducto.setItemRenderer(new ListitemRenderer()
@@ -71,7 +71,7 @@ public class RentaCtrl extends GenericForwardComposer {
 
 			@Override
 			public void render(Listitem item, Object data, int arg2)
-					throws Exception {
+			throws Exception {
 				// TODO Auto-generated method stub
 				ProductoExitenciaDTO producto=(ProductoExitenciaDTO) data;
 				item.setValue(producto);
@@ -89,8 +89,8 @@ public class RentaCtrl extends GenericForwardComposer {
 				hora.setParent(cell4);
 				mensaje.setParent(cell3);
 				final int idProducto=producto.getIdProductoExistencia();
-				
-				
+
+
 				final Button inicio=new Button();
 				final Button parar=new Button();
 				parar.setVisible(false);
@@ -129,8 +129,8 @@ public class RentaCtrl extends GenericForwardComposer {
 						Integer cobro=cobro(diffMinutes);
 						String compara="$ "+cobro;
 						Comparacion.setValue(compara);
-						
-						
+
+
 						Info.open(Info);
 						cambiaVisibilidad2(parar,inicio);
 						hora.setValue("");
@@ -138,13 +138,13 @@ public class RentaCtrl extends GenericForwardComposer {
 						HoraF.setValue(getHora());
 						Producto2.setValue(productoNombre);
 						rentaBo.Update(idRenta,finalHora);
-						
+
 					}
 				});
-				
-				
+
+
 				parar.setParent(cell2);
-				
+
 				cell0.setParent(item);
 				cell1.setParent(item);
 				cell2.setParent(item);
@@ -152,7 +152,7 @@ public class RentaCtrl extends GenericForwardComposer {
 				cell4.setParent(item);
 			}
 		});
-	
+
 	}
 	public void cambiaVisibilidad(Button parar,Button inicio){
 		parar.setVisible(true);
@@ -162,7 +162,7 @@ public class RentaCtrl extends GenericForwardComposer {
 		parar.setVisible(false);
 		inicio.setVisible(true);
 	}
-	
+
 	public String getHora(){
 		Calendar hora=Calendar.getInstance();
 		int h =hora.get(Calendar.HOUR);
@@ -173,9 +173,9 @@ public class RentaCtrl extends GenericForwardComposer {
 		String horaInicio=hor+":"+min+" "+x;
 		return horaInicio;
 	}
-	
+
 	public Integer cobro(long diffMinutes){
-//		precio.toBigInteger();
+		//		precio.toBigInteger();
 		Integer precio=0;
 		String cobro="20,30,45,100";
 		String[]a=cobro.split(",");
@@ -183,14 +183,14 @@ public class RentaCtrl extends GenericForwardComposer {
 			precio=Integer.valueOf(a[0]);
 		}
 		return precio;
-		
+
 	}
-	
+
 	public void onClick$Revisa(){
-	Info.close();	
+		Info.close();	
 	}
-	
+
 	public void onClick$Confirma(){
-	Comienza.close();	
+		Comienza.close();	
 	}
 }
