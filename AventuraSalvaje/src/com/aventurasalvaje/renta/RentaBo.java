@@ -49,7 +49,7 @@ public class RentaBo {
 	}
 	
 	public Precios precios(int idSucursal){
-		return PreciosDao.findByidsucursal(idSucursal);
+			return PreciosDao.findByidsucursal(idSucursal);
 	}
 	
 }

@@ -88,6 +88,7 @@
 					<button id="Revisa" label="Aceptar"></button>
 				</cell>
 			</vbox>
+			<space/>
 		</popup>
 	</window>
 </zk>

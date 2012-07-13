@@ -1,6 +1,7 @@
 package com.aventurasalvaje.pojos;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +23,7 @@ public class Cobros implements java.io.Serializable {
 
 	private Integer idCobros;
 	private Usuario usuario;
-	private Timestamp fecha;
+	private Date fecha;
 
 	// Constructors
 
@@ -31,7 +32,7 @@ public class Cobros implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Cobros(Usuario usuario, Timestamp fecha) {
+	public Cobros(Usuario usuario, Date fecha) {
 		this.usuario = usuario;
 		this.fecha = fecha;
 	}
@@ -59,11 +60,11 @@ public class Cobros implements java.io.Serializable {
 	}
 
 	@Column(name = "fecha", length = 19)
-	public Timestamp getFecha() {
+	public Date getFecha() {
 		return this.fecha;
 	}
 
-	public void setFecha(Timestamp fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

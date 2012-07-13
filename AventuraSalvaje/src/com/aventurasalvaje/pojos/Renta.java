@@ -1,6 +1,8 @@
 package com.aventurasalvaje.pojos;
 
+
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * Renta entity. @author MyEclipse Persistence Tools
@@ -69,8 +69,7 @@ public class Renta implements java.io.Serializable {
 		this.productoExistencia = productoExistencia;
 	}
 
-	
-	@Column(name = "hora_entrada", nullable = false, length = 10)
+	@Column(name = "hora_entrada", nullable = false, length = 19)
 	public Date getHoraEntrada() {
 		return this.horaEntrada;
 	}
@@ -79,8 +78,7 @@ public class Renta implements java.io.Serializable {
 		this.horaEntrada = horaEntrada;
 	}
 
-	
-	@Column(name = "hora_salida", length = 10)
+	@Column(name = "hora_salida", length = 19)
 	public Date getHoraSalida() {
 		return this.horaSalida;
 	}

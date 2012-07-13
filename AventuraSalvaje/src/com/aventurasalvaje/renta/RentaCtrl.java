@@ -55,7 +55,6 @@ public class RentaCtrl extends GenericForwardComposer {
 		super.doAfterCompose(comp);
 		// TODO Auto-generated method stub
 		rentaBo=new RentaBo();
-		precio=new BigDecimal(rentaBo.precios(idSucursal).getCostoTotal());
 		List<ProductoExistencia> productos=rentaBo.getProductos();
 		List<ProductoExitenciaDTO> ltPro=new ArrayList<ProductoExitenciaDTO>();
 
@@ -126,8 +125,8 @@ public class RentaCtrl extends GenericForwardComposer {
 						long hor2 = finalHora.getTimeInMillis();
 						long diff=hor2-hor1;
 						long diffMinutes = diff / (60 * 1000);
-						Integer cobro=cobro(diffMinutes);
-						String compara="$ "+cobro;
+						precio=obtener(rentaBo.precios(idSucursal).getCostoTotal(),diffMinutes);
+						String compara="$ "+precio.setScale(2);
 						Comparacion.setValue(compara);
 
 
@@ -154,6 +153,9 @@ public class RentaCtrl extends GenericForwardComposer {
 		});
 
 	}
+	private BigDecimal obtener(String costoTotal,long diffMinutes) {
+		return null;
+	}
 	public void cambiaVisibilidad(Button parar,Button inicio){
 		parar.setVisible(true);
 		inicio.setVisible(false);
@@ -172,18 +174,6 @@ public class RentaCtrl extends GenericForwardComposer {
 		String min=m<10?"0"+m:String.valueOf(m);
 		String horaInicio=hor+":"+min+" "+x;
 		return horaInicio;
-	}
-
-	public Integer cobro(long diffMinutes){
-		//		precio.toBigInteger();
-		Integer precio=0;
-		String cobro="20,30,45,100";
-		String[]a=cobro.split(",");
-		if(diffMinutes<5){
-			precio=Integer.valueOf(a[0]);
-		}
-		return precio;
-
 	}
 
 	public void onClick$Revisa(){
