@@ -1,0 +1,30 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="nuevowindow" visible="false" apply="com.aventurasalvaje.productolista.NuevowindowCtrl">
+			<vbox>
+				<cell>
+					<hbox>
+						<cell>
+							<label value="Producto" />
+						</cell>
+						<space orient="horizontal" />
+						<cell align="right">
+
+							<combobox id="producto_nom" />
+
+
+						</cell>
+					</hbox>
+					<space orient="vertical" />
+
+				</cell>
+				<space orient="vertical" />
+				<cell align="center">
+					<button id="Alta" label="Aceptar"></button>
+				</cell>
+				<cell align="center">
+					<button id="cancelar" label="Cancelar"></button>
+				</cell>
+			</vbox>
+		</window>
+</zk>

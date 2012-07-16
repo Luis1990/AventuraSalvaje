@@ -1,20 +1,27 @@
 <?page title="Login" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="" border="normal" apply="com.aventurasalvaje.login.LoginCtrl" width="800">
-<hbox >
-<textbox id="usuario"/>
-<textbox id="contrasena"/>
-<space orient="vertical"/>
-<button id="logear" label="Entrar"/>
-</hbox>
-</window>
-</zk>
-<listbox >
-	<listhead>
-		<listheader label="id_producto" sort="auto" />
-		<listheader label="id_catalogo" sort="auto" />
-		<listheader label="descripcion" sort="auto" />
-	</listhead>
-<listbox >
-	
+
+	<div>
+		<window title="" border="normal" width="800"
+			apply="com.aventurasalvaje.productolista.ListaCtrl">
+			<listbox id="listaproducto" checkmark="true"
+				multiple="true">
+				<listhead>
+					<listheader label="Producto" />
+					<listheader label="nombre" />
+					<listheader label="descripcion" />
+
+				</listhead>
+			</listbox>
+
+			<space orient="vertical" width="40px" />
+			<button id="nuevo" label="agregar" />
+			<button id="eliminar" label="eliminar" />
+
+
+		</window>
 		
+	</div>
+</zk>
+
+
