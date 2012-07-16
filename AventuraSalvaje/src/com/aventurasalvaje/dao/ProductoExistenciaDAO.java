@@ -15,12 +15,7 @@ public class ProductoExistenciaDAO {
 	public List<ProductoExistencia> findAll(){
 		Session session=HibernateSessionFactory.getSession();
 		Criteria criteria = session.createCriteria(ProductoExistencia.class);
-		List<ProductoExistencia> pro=criteria.list();
-		for (ProductoExistencia productoExistencia : pro) {
-			System.out.println(productoExistencia.getDescripcionGral());
-			System.out.println(productoExistencia.getCatalogo().getNombreProducto());
-		}
-		
+		List<ProductoExistencia> pro=criteria.list();		
 		return criteria.list();
 	}
 

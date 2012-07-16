@@ -36,9 +36,8 @@ public class ProductoExistencia implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public ProductoExistencia(Catalogo catalogo, String descripcionGral) {
+	public ProductoExistencia(Catalogo catalogo) {
 		this.catalogo = catalogo;
-		this.descripcionGral = descripcionGral;
 	}
 
 	/** full constructor */
@@ -62,7 +61,7 @@ public class ProductoExistencia implements java.io.Serializable {
 		this.idProductoExistencia = idProductoExistencia;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idCatalogo", nullable = false)
 	public Catalogo getCatalogo() {
 		return this.catalogo;
@@ -72,7 +71,7 @@ public class ProductoExistencia implements java.io.Serializable {
 		this.catalogo = catalogo;
 	}
 
-	@Column(name = "descripcion_gral", nullable = false, length = 45)
+	@Column(name = "descripcion_gral", length = 45)
 	public String getDescripcionGral() {
 		return this.descripcionGral;
 	}

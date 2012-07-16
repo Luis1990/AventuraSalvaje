@@ -23,6 +23,7 @@ public class Catalogo implements java.io.Serializable {
 
 	private Integer idCatalogo;
 	private String nombreProducto;
+	private String nombreArchivo;
 	private Set<ProductoExistencia> productoExistencias = new HashSet<ProductoExistencia>(
 			0);
 
@@ -33,14 +34,16 @@ public class Catalogo implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Catalogo(String nombreProducto) {
+	public Catalogo(String nombreProducto, String nombreArchivo) {
 		this.nombreProducto = nombreProducto;
+		this.nombreArchivo = nombreArchivo;
 	}
 
 	/** full constructor */
-	public Catalogo(String nombreProducto,
+	public Catalogo(String nombreProducto, String nombreArchivo,
 			Set<ProductoExistencia> productoExistencias) {
 		this.nombreProducto = nombreProducto;
+		this.nombreArchivo = nombreArchivo;
 		this.productoExistencias = productoExistencias;
 	}
 
@@ -63,6 +66,15 @@ public class Catalogo implements java.io.Serializable {
 
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
+	}
+
+	@Column(name = "nombre_archivo", nullable = false, length = 20)
+	public String getNombreArchivo() {
+		return this.nombreArchivo;
+	}
+
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "catalogo")
