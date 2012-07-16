@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.aventurasalvaje.hibernate.HibernateSessionFactory;
 import com.aventurasalvaje.pojos.Usuario;
@@ -16,4 +18,33 @@ public class UsuarioDAO {
 		
 		return criteria.list();
 	}
+
+	public void dellete(Usuario usuario) {
+		Session session=HibernateSessionFactory.getSession();
+		session.beginTransaction(); 
+		session.delete(usuario);
+		Transaction t=session.getTransaction();
+		t.commit();
+		session.close();
+	}
+
+	public void save(Usuario usuario) {
+		Session session=HibernateSessionFactory.getSession();
+		session.save(usuario);
+		session.beginTransaction(); 
+		Transaction t=session.getTransaction();
+		t.commit();
+		session.close();
+	}
+	
+	
+	public Usuario findByid(Integer idusario){
+		Session session=HibernateSessionFactory.getSession();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		
+		criteria.add(Restrictions.eq("idUsuario", idusario));
+		
+		return (Usuario) criteria.uniqueResult();
+	}
+
 }
