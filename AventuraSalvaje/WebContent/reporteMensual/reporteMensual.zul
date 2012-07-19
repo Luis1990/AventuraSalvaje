@@ -1,0 +1,12 @@
+<?page title="Reporte del mes" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Reporte del mes" border="normal">
+		<listbox id="rentaProductos">
+			<listhead>
+				<listheader label="Nombre" />
+				<listheader label="Fecha de renta" />
+				<listheader label="Cobro" />
+			</listhead>
+		</listbox>
+</window>
+</zk>

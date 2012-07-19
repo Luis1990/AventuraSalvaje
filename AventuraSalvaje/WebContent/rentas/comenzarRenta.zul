@@ -1,0 +1,32 @@
+<?page title="Renta" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="Comienza" apply="com.aventurasalvaje.renta.ComienzaCtrl">
+		<vbox>
+			<cell>
+				<hbox>
+					<cell>
+						<image id="Image" />
+					</cell>
+					<space orient="horizontal" />
+					<cell>
+						<label id="Producto" />
+					</cell>
+					<space orient="horizontal" />
+					<cell align="center">
+						<label value="Hora de Inicio" />
+						<vbox>
+							<space orient="vertical" />
+							<cell align="center">
+								<label id="HoraI" value="" />
+							</cell>
+						</vbox>
+					</cell>
+				</hbox>
+			</cell>
+			<space orient="vertical" />
+			<cell align="center">
+				<button id="Confirma" label="Aceptar"></button>
+			</cell>
+		</vbox>
+	</window>
+</zk>

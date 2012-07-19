@@ -47,7 +47,7 @@ public class RentaDAO {
 		Session session=HibernateSessionFactory.getSession();
 		Criteria criteria = session.createCriteria(Renta.class);
 		criteria.add(Restrictions.eq("productoExistencia.idProductoExistencia",idProductoExistencia));
-		criteria.addOrder(Order.desc("idRenta"));
+		criteria.addOrder(Order.desc("idRenta"));        
 		return (Renta) criteria.list().get(0);
 	}
 	

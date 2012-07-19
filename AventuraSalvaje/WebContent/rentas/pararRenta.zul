@@ -1,0 +1,48 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="Para" apply="com.aventurasalvaje.renta.PararCtrl">
+		<vbox>
+			<cell>
+				<hbox>
+					<cell>
+					<image id="Imagenpara" />
+					</cell>
+					<separator orient="horizontal" />
+					<cell align="center">
+						<label id="Producto" />
+					</cell>
+					<separator orient="horizontal" />
+					<cell>
+						<vbox>
+							<cell>
+								<label value="Hora de Inicio" />
+							</cell>
+							<cell>
+								<label id="HoraI" />
+							</cell>
+							<separator orient="vertical" />
+							<cell>
+								<label value="Hora de Termino" />
+							</cell>
+							<cell>
+								<label id="HoraF" />
+							</cell>
+							<separator orient="vertical" />
+							<cell>
+								<label value="Cantidad" />
+							</cell>
+							<cell>
+								<label id="Comparacion" />
+							</cell>
+						</vbox>
+					</cell>
+				</hbox>
+			</cell>
+			<space orient="vertical" />
+			<cell align="center">
+				<button id="Revisa" label="Aceptar"></button>
+			</cell>
+		</vbox>
+		<space />
+	</window>
+</zk>
