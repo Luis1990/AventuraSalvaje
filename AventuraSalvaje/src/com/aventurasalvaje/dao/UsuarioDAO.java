@@ -37,14 +37,34 @@ public class UsuarioDAO {
 		session.close();
 	}
 	
-	
 	public Usuario findByid(Integer idusario){
 		Session session=HibernateSessionFactory.getSession();
 		Criteria criteria = session.createCriteria(Usuario.class);
-		
 		criteria.add(Restrictions.eq("idUsuario", idusario));
-		
 		return (Usuario) criteria.uniqueResult();
 	}
+
+	public void Update(Usuario usuario) {
+		try {
+			Session session = HibernateSessionFactory.getSession();
+			session.beginTransaction();
+			session.update(usuario);
+			closeSession(session);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void closeSession(Session session) {
+		try {
+			Transaction t = session.getTransaction();
+				t.commit();
+		}
+		finally {
+			session.close();
+		}
+	} 
+	
+	
 
 }

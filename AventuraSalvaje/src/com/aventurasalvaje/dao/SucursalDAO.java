@@ -17,6 +17,7 @@ public class SucursalDAO {
 		
 		criteria.add(Restrictions.eq("idSucursal", idSucursal));
 		return (Sucursal) criteria.uniqueResult();
+		
 	
 	}
 

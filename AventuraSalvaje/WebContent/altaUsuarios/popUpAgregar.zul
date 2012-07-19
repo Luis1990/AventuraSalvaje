@@ -1,0 +1,41 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="nuevaWindow" title="Nuevo Usuario" border="normal" 
+	apply= "com.aventurasalvaje.altaUsuarios.NuevaWindowCtrl"
+	 height="200px"	width="300px">
+	 
+	 
+		<vbox>
+			<cell>
+				<hbox>
+					<cell>
+						<label value="Nombre" />
+					</cell>
+					<space orient="horizontal" />
+					<cell align="right">
+						<textbox id="usuario_nom" />
+					</cell>
+				</hbox>
+				<space orient="vertical" />
+				<vbox>
+					<hbox>
+						<cell>
+							<label value="Password" />
+						</cell>
+						<space orient="horizontal" />
+						<cell align="right">
+							<textbox id="usuario_pass" />
+						</cell>
+					</hbox>
+				</vbox>
+			</cell>
+			<space orient="vertical" />
+			<cell align="center">
+				<button id="confirma" label="Aceptar"></button>
+			</cell>
+			<cell align="center">
+				<button id="cancelar" label="Cancelar"></button>
+			</cell>
+		</vbox>
+	</window>
+</zk>

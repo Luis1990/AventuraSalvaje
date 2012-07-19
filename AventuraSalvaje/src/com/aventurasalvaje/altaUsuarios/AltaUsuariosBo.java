@@ -33,7 +33,14 @@ public class AltaUsuariosBo {
 		usuario.setIdPerfil(0);
 		usuarioDao.save(usuario);
 	}
+
+	public void Update(List<Usuario> usuariosCambio) {
 	
-	
-	
+		for(Usuario u: usuariosCambio){
+			usuarioDao.Update(u);
+		}
+		  
+		
+		
+	}
 }
