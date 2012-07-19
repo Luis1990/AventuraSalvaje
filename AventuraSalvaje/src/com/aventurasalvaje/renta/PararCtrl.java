@@ -65,8 +65,10 @@ public class PararCtrl extends GenericForwardComposer {
 		idRenta=renta.getIdRenta();
 		Imagenpara.setSrc(pic);
 		Producto.setValue(nombre);
-		HoraI.setValue(getHora());
 		Calendar inicialHora=Calendar.getInstance();
+		inicialHora.setTime(renta.getHoraEntrada());
+		horalabel(inicialHora);
+		HoraI.setValue(horalabel(inicialHora));
 		Calendar finalHora=Calendar.getInstance();
 		long hor1 = inicialHora.getTimeInMillis();
 		long hor2 = finalHora.getTimeInMillis();
@@ -76,6 +78,17 @@ public class PararCtrl extends GenericForwardComposer {
 		String compara="$ "+precio.setScale(2);
 		HoraF.setValue(getHora());
 		Comparacion.setValue(compara);
+	}
+	
+	private String horalabel(Calendar inicialhora){
+		int h =inicialhora.get(Calendar.HOUR);
+		String hor=h==0?"12":String.valueOf(h);
+		int m = inicialhora.get(Calendar.MINUTE);
+		String x=(inicialhora.get(Calendar.AM_PM))!=1?"am":"pm";
+		String min=m<10?"0"+m:String.valueOf(m);
+		String horaInicio=hor+":"+min+" "+x;
+		return horaInicio;
+		
 	}
 
 	private BigDecimal obtener(String costoTotal,long diffMinutes) {

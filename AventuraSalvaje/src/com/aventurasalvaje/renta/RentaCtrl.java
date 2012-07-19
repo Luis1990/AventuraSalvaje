@@ -135,65 +135,8 @@ public class RentaCtrl extends GenericForwardComposer {
 				cell4.setParent(item);
 			}
 		});
-
 	}
-	private BigDecimal obtener(String costoTotal,long diffMinutes) {
-		BigDecimal minutos=new BigDecimal(diffMinutes);
-		String []cadenacostos=costoTotal.split(",");
-		BigDecimal valor=new BigDecimal(0);
-		if(diffMinutes<=9){
-			valor=new BigDecimal(cadenacostos[0]);
-			if(diffMinutes>5){
-				for(int i=0;i<minutos.intValue()-5;i++){
-					valor=valor.add(new BigDecimal(4));
-				}
-			}
-		}
-		else{
-			if(diffMinutes<=14){
-				valor=new BigDecimal(cadenacostos[1]);
-				if(diffMinutes>10){
-					for(int i=0;i<minutos.intValue()-10;i++){
-						valor=valor.add(new BigDecimal(4));
-					}
-				}
-			}
-			else{
-				if(diffMinutes<=19){
-					valor=new BigDecimal(cadenacostos[2]);
-					if(diffMinutes>15){
-						for(int i=0;i<minutos.intValue()-15;i++){
-							valor=valor.add(new BigDecimal(4));
-						}
-					}
-				}
-				else{
-					if(diffMinutes<=29){
-						valor=new BigDecimal(cadenacostos[3]);
-						if(diffMinutes>20){
-							for(int i=0;i<minutos.intValue()-20;i++){
-								valor=valor.add(new BigDecimal(4));
-							}
-						}
-					}
-					else{
-						if(diffMinutes<=59){
-							valor=new BigDecimal(cadenacostos[4]);
-							if(diffMinutes>30){
-								for(int i=0;i<minutos.intValue()-30;i++){
-									valor=valor.add(new BigDecimal(4));
-								}
-							}
-						}
-						if(diffMinutes>=60){
-							valor=new BigDecimal(cadenacostos[5]);	
-						}
-					}
-				}
-			}
-		}
-		return valor;
-	}
+	
 	public void cambiaVisibilidad(Button parar,Button inicio){
 		parar.setVisible(true);
 		inicio.setVisible(false);

@@ -50,7 +50,7 @@ public class ComienzaCtrl extends GenericForwardComposer {
 			public String getHora(){
 				Calendar hora=Calendar.getInstance();
 				int h =hora.get(Calendar.HOUR);
-				String hor=h==0?"12":String.valueOf(h);
+				String hor= h==0?"12":String.valueOf(h);
 				int m = hora.get(Calendar.MINUTE);
 				String x=(hora.get(Calendar.AM_PM))!=1?"am":"pm";
 				String min=m<10?"0"+m:String.valueOf(m);
