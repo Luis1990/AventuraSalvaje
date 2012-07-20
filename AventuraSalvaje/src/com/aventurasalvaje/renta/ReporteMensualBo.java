@@ -32,12 +32,7 @@ import com.aventurasalvaje.pojos.Usuario;
 		horaF.get(Calendar.MONTH),
 		horaF.getActualMaximum(Calendar.DAY_OF_MONTH));
 		Date ini=horaI.getTime();
-		System.out.println(ini);
 		Date fn=horaF.getTime();
-		System.out.println(fn);
 	    return rentaDAO.findByFechas(ini,fn);
 	}
-	public List<Renta> getRentas() {
-		return rentaDao.findAll();
-	} 
 }

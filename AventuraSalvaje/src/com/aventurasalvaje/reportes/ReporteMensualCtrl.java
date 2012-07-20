@@ -51,6 +51,7 @@ public class ReporteMensualCtrl extends GenericForwardComposer {
 		ReporteMensualBo=new ReporteMensualBo();
 		List<Renta> lista=ReporteMensualBo.mes();
 		List<ReportePDF> newlist=new ArrayList<ReportePDF>();
+		
 		for (int i=0;i<lista.size();i++) {
 			ReportePDF objeto=new ReportePDF();
 			objeto.setNombrepro(lista.get(i).getProductoExistencia().getCatalogo().getNombreProducto());
@@ -58,12 +59,14 @@ public class ReporteMensualCtrl extends GenericForwardComposer {
 			objeto.setFin(lista.get(i).getHoraSalida());
 			newlist.add(objeto);
 		}
-		Map<Object, Object> parameters= new HashMap<Object, Object>();
-		parameters.put("Nombre", "Luis");
-		jasper.setSrc("");
+		Renta x=new Renta();
+		Map<Object, Object> parameters=new HashMap<Object, Object>();
+		parameters.put("nombrepro",newlist);
+//		parameters.pu
+		//parameters.put("inic",x.getHoraEntrada());
+		//parameters.put("fin",x.getHoraSalida());
+		jasper.setSrc("/formatos/reporteMensual.jasper");
 		jasper.setParameters(parameters);
-		
-		
 		
 		ListModelList model=new ListModelList(lista);
 		rentaProductos.setModel(model);
