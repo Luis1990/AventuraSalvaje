@@ -30,7 +30,6 @@ public class RentaBo {
 	public Renta renta(int idProductoExistencia){
 //		Renta renta=rentaDao.findByidproducto(idProductoExistencia);
 		return rentaDao.findByidproducto(idProductoExistencia);
-		
 	}
 	
 	public void Save(Integer idproducto,Calendar inicio){

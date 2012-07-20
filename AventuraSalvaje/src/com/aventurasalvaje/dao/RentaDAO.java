@@ -1,5 +1,8 @@
 package com.aventurasalvaje.dao;
 
+import java.util.Date;
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -47,7 +50,7 @@ public class RentaDAO {
 		Session session=HibernateSessionFactory.getSession();
 		Criteria criteria = session.createCriteria(Renta.class);
 		criteria.add(Restrictions.eq("productoExistencia.idProductoExistencia",idProductoExistencia));
-		criteria.addOrder(Order.desc("idRenta"));
+		criteria.addOrder(Order.desc("idRenta"));        
 		return (Renta) criteria.list().get(0);
 	}
 	
@@ -59,5 +62,20 @@ public class RentaDAO {
 		finally {
 			session.close();
 		}
-	} // end closeSession
+	}
+	
+	public List<Renta> findByFechas(Date fechaInicial, Date fechaFin){
+
+		Session session=HibernateSessionFactory.getSession();
+		Criteria criteria = session.createCriteria(Renta.class);
+		criteria.add(Restrictions.between("horaEntrada",fechaInicial,fechaFin));
+//		criteria.add(Restrictions.b)
+		return criteria.list();
+		
+	}
+	public List<Renta> findAll(){
+		Session sesion=HibernateSessionFactory.getSession();
+		Criteria criteria = sesion.createCriteria(Renta.class);
+		return criteria.list();
+	}
 }

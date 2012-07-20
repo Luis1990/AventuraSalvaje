@@ -1,8 +1,7 @@
 <?page title="Consulta" contentType="text/html;charset=UTF-8"?>
 <zk>
-
-	<window title="Renta" border="normal"
-		apply="com.aventurasalvaje.renta.RentaCtrl" width="800">
+	<window title="Renta" border="normal" width="800"
+		apply="com.aventurasalvaje.renta.RentaCtrl">
 		<listbox id="listaProducto">
 			<listhead>
 				<listheader label="Imagen" />
@@ -12,83 +11,5 @@
 				<listheader label="" />
 			</listhead>
 		</listbox>
-
-		<popup id="Comienza" height="180" width="250">
-			<vbox>
-				<cell>
-					<hbox>
-						<cell>
-							<image width="100" height="100"
-								src="/imagenes/leon.jpg" />
-						</cell>
-						<space orient="horizontal" />
-						<cell>
-							<label id="Producto" />
-						</cell>
-						<space orient="horizontal" />
-						<cell align="center">
-							<label value="Hora de Inicio" />
-							<vbox>
-								<space orient="vertical" />
-								<cell align="center">
-									<label id="HoraI" value="" />
-								</cell>
-							</vbox>
-						</cell>
-					</hbox>
-				</cell>
-				<space orient="vertical" />
-				<cell align="center">
-					<button id="Confirma" label="Aceptar"></button>
-				</cell>
-			</vbox>
-		</popup>
-
-		<popup id="Info" height="250" width="280">
-			<vbox>
-				<cell>
-					<hbox>
-						<cell>
-							<image width="100" height="100"
-								src="/imagenes/leon.jpg" />
-						</cell>
-						<separator orient="horizontal" />
-						<cell align="center">
-							<label id="Producto2" />
-						</cell>
-						<separator orient="horizontal" />
-						<cell>
-							<vbox>
-								<cell>
-									<label value="Hora de Inicio" />
-								</cell>
-								<cell>
-									<label id="HoraI2" />
-								</cell>
-								<separator orient="vertical" />
-								<cell>
-									<label value="Hora de Termino" />
-								</cell>
-								<cell>
-									<label id="HoraF" />
-								</cell>
-								<separator orient="vertical" />
-								<cell>
-									<label value="Cantidad" />
-								</cell>
-								<cell>
-									<label id="Comparacion" />
-								</cell>
-							</vbox>
-						</cell>
-					</hbox>
-				</cell>
-				<space orient="vertical" />
-				<cell align="center">
-					<button id="Revisa" label="Aceptar"></button>
-				</cell>
-			</vbox>
-			<space/>
-		</popup>
 	</window>
 </zk>
