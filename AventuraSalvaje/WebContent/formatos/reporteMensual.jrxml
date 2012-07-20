@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteMensual" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3dfebf97-ff6f-4f07-bd72-001214e6726a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Nombre" class="java.lang.String"/>
+	<parameter name="Apellido" class="java.lang.String"/>
+	<parameter name="DSFd" class="java.lang.String"/>
+	<field name="nombrepro" class="java.lang.String"/>
+	<field name="fin" class="java.util.Date"/>
+	<field name="inic" class="java.util.Date"/>
+	<variable name="suma" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="cfb8d9a5-bc49-49fc-90fd-a5245e68c7d6" x="140" y="14" width="309" height="46"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Reporte mensual de renta]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="874880aa-7e99-4475-a434-f70707140ff2" x="0" y="0" width="180" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fe387444-1fbf-4d8c-9dfa-1461d20a29c6" x="180" y="0" width="228" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha de inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6d418ad4-021b-4bf7-b4f7-8afe388e515b" x="408" y="0" width="147" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha de fin]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="27bf4658-30a1-4718-97ea-6e074e874ba7" x="0" y="0" width="180" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombrepro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="25f2a8ed-4df9-4b0f-a1d9-def0b1d56053" x="408" y="0" width="147" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d936890-78b4-4e0f-b105-20f35b4cab55" x="180" y="0" width="228" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{inic}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="49" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

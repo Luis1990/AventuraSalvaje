@@ -13,10 +13,10 @@ import com.aventurasalvaje.reportes.ReporteMensualCtrl;
  *
  */
 public class ReportePDF {
+	
 	Date inic;
 	Date fin;
 	String nombrepro;
-	ReportePDF Obj=new ReportePDF();
 	
 	public Date getInic(){
 		return inic;

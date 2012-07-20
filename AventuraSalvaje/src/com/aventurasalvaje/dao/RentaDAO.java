@@ -69,13 +69,6 @@ public class RentaDAO {
 		Session session=HibernateSessionFactory.getSession();
 		Criteria criteria = session.createCriteria(Renta.class);
 		criteria.add(Restrictions.between("horaEntrada",fechaInicial,fechaFin));
-//		criteria.add(Restrictions.b)
-		return criteria.list();
-		
-	}
-	public List<Renta> findAll(){
-		Session sesion=HibernateSessionFactory.getSession();
-		Criteria criteria = sesion.createCriteria(Renta.class);
-		return criteria.list();
+		return criteria.list();	
 	}
 }
