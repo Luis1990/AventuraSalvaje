@@ -59,6 +59,8 @@ public class AltaUsuariosCtrl extends GenericForwardComposer {
 		List<Usuario> usuarios=altausuarioBO.getUsuarios();
 
 		ListModelList model=new ListModelList(usuarios);
+		
+		
 		listaUsuario.setModel(model);
 
 		listaUsuario.setItemRenderer(new ListitemRenderer() {

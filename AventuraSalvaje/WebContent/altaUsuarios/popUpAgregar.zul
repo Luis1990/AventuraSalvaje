@@ -3,8 +3,6 @@
 	<window id="nuevaWindow" title="Nuevo Usuario" border="normal" 
 	apply= "com.aventurasalvaje.altaUsuarios.NuevaWindowCtrl"
 	 height="200px"	width="300px">
-	 
-	 
 		<vbox>
 			<cell>
 				<hbox>
