@@ -17,7 +17,14 @@ public class ReportePDF {
 	Date inic;
 	Date fin;
 	String nombrepro;
+	String calculo;
 	
+	public String getCalculo() {
+		return calculo;
+	}
+	public void setCalculo(String calculo) {
+		this.calculo = calculo;
+	}
 	public Date getInic(){
 		return inic;
 	}

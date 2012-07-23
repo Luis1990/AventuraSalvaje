@@ -8,5 +8,6 @@
 				<listheader label="Termino de renta" />
 			</listhead>
 		</listbox>
+		<jasperreport id="jasper"/>
 </window>
 </zk>
