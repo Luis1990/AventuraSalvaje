@@ -165,3 +165,4 @@ public class ReporteMensualCtrl extends GenericForwardComposer {
 		return valor;
 	}
 }
+//pollo puto
