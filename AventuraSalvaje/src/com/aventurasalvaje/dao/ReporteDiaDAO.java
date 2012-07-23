@@ -1,5 +1,6 @@
 package com.aventurasalvaje.dao;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -22,15 +23,13 @@ public class ReporteDiaDAO {
 	}
 	
 	public List<Renta> findByFechas(Date fechaInicial, Date fechaFin){
-		
+System.out.println(fechaInicial);
+System.out.println(fechaFin);
 		Session session=HibernateSessionFactory.getSession();
 		Criteria criteria = session.createCriteria(Renta.class);
 		criteria.add(Restrictions.between("horaEntrada",fechaInicial,fechaFin));
-	
-		//12:01 - 11:59
-		
 		return criteria.list();
-				
+		
 	}
 	
 }

@@ -1,6 +1,18 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="new page title" border="normal">
-
+	<window title="Reporte Diario" border="normal"
+		apply="com.aventurasalvaje.reportes.ReporteDiaCtrl"
+		width="300">
+		<listbox id="listaRenta" >
+			<listhead>
+				<listheader label="Nombre del producto" sort="auto" />
+				<listheader label="Fecha de Entrada" sort="auto" />
+				<listheader label="Fecha Salida" sort="auto" />
+			</listhead>
+		</listbox>
+		
+		<cell align="center">
+				<button id="confirma" label="Generar Reporte"></button>
+		</cell>
 </window>
 </zk>
