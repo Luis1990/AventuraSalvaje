@@ -1,16 +1,16 @@
 package com.aventurasalvaje.pojos;
 
-
-import java.util.Date;
-
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,10 +23,11 @@ public class Precios implements java.io.Serializable {
 	// Fields
 
 	private Integer idPrecios;
-	private Sucursal sucursal;
+	private Integer idSucursal;
 	private String costoTotal;
 	private Long costoExtra;
-	private Date fechaVigencia;
+	private Timestamp fechaVigencia;
+	private Set<Sucursal> sucursals = new HashSet<Sucursal>(0);
 
 	// Constructors
 
@@ -35,18 +36,18 @@ public class Precios implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Precios(Sucursal sucursal, Date fechaVigencia) {
-		this.sucursal = sucursal;
+	public Precios(Timestamp fechaVigencia) {
 		this.fechaVigencia = fechaVigencia;
 	}
 
 	/** full constructor */
-	public Precios(Sucursal sucursal, String costoTotal, Long costoExtra,
-			Date fechaVigencia) {
-		this.sucursal = sucursal;
+	public Precios(Integer idSucursal, String costoTotal, Long costoExtra,
+			Timestamp fechaVigencia, Set<Sucursal> sucursals) {
+		this.idSucursal = idSucursal;
 		this.costoTotal = costoTotal;
 		this.costoExtra = costoExtra;
 		this.fechaVigencia = fechaVigencia;
+		this.sucursals = sucursals;
 	}
 
 	// Property accessors
@@ -61,14 +62,13 @@ public class Precios implements java.io.Serializable {
 		this.idPrecios = idPrecios;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idSucursal", nullable = false)
-	public Sucursal getSucursal() {
-		return this.sucursal;
+	@Column(name = "idSucursal")
+	public Integer getIdSucursal() {
+		return this.idSucursal;
 	}
 
-	public void setSucursal(Sucursal sucursal) {
-		this.sucursal = sucursal;
+	public void setIdSucursal(Integer idSucursal) {
+		this.idSucursal = idSucursal;
 	}
 
 	@Column(name = "costo_total", length = 50)
@@ -90,12 +90,21 @@ public class Precios implements java.io.Serializable {
 	}
 
 	@Column(name = "fecha_vigencia", nullable = false, length = 19)
-	public Date getFechaVigencia() {
+	public Timestamp getFechaVigencia() {
 		return this.fechaVigencia;
 	}
 
-	public void setFechaVigencia(Date fechaVigencia) {
+	public void setFechaVigencia(Timestamp fechaVigencia) {
 		this.fechaVigencia = fechaVigencia;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "precios")
+	public Set<Sucursal> getSucursals() {
+		return this.sucursals;
+	}
+
+	public void setSucursals(Set<Sucursal> sucursals) {
+		this.sucursals = sucursals;
 	}
 
 }

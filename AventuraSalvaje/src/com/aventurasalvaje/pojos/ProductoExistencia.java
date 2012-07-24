@@ -24,10 +24,10 @@ public class ProductoExistencia implements java.io.Serializable {
 	// Fields
 
 	private Integer idProductoExistencia;
+	private Sucursal sucursal;
 	private Catalogo catalogo;
 	private String descripcionGral;
 	private Set<Renta> rentas = new HashSet<Renta>(0);
-	private Set<Inventario> inventarios = new HashSet<Inventario>(0);
 
 	// Constructors
 
@@ -36,17 +36,18 @@ public class ProductoExistencia implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public ProductoExistencia(Catalogo catalogo) {
+	public ProductoExistencia(Sucursal sucursal, Catalogo catalogo) {
+		this.sucursal = sucursal;
 		this.catalogo = catalogo;
 	}
 
 	/** full constructor */
-	public ProductoExistencia(Catalogo catalogo, String descripcionGral,
-			Set<Renta> rentas, Set<Inventario> inventarios) {
+	public ProductoExistencia(Sucursal sucursal, Catalogo catalogo,
+			String descripcionGral, Set<Renta> rentas) {
+		this.sucursal = sucursal;
 		this.catalogo = catalogo;
 		this.descripcionGral = descripcionGral;
 		this.rentas = rentas;
-		this.inventarios = inventarios;
 	}
 
 	// Property accessors
@@ -59,6 +60,16 @@ public class ProductoExistencia implements java.io.Serializable {
 
 	public void setIdProductoExistencia(Integer idProductoExistencia) {
 		this.idProductoExistencia = idProductoExistencia;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idSucursal", nullable = false)
+	public Sucursal getSucursal() {
+		return this.sucursal;
+	}
+
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -87,15 +98,6 @@ public class ProductoExistencia implements java.io.Serializable {
 
 	public void setRentas(Set<Renta> rentas) {
 		this.rentas = rentas;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "productoExistencia")
-	public Set<Inventario> getInventarios() {
-		return this.inventarios;
-	}
-
-	public void setInventarios(Set<Inventario> inventarios) {
-		this.inventarios = inventarios;
 	}
 
 }

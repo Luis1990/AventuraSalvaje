@@ -6,9 +6,11 @@ import java.util.List;
 import com.aventurasalvaje.dao.PreciosDAO;
 import com.aventurasalvaje.dao.ProductoExistenciaDAO;
 import com.aventurasalvaje.dao.RentaDAO;
+import com.aventurasalvaje.dao.SucursalDAO;
 import com.aventurasalvaje.pojos.Precios;
 import com.aventurasalvaje.pojos.ProductoExistencia;
 import com.aventurasalvaje.pojos.Renta;
+import com.aventurasalvaje.pojos.Sucursal;
 
 public class RentaBo {
 
@@ -62,7 +64,8 @@ public class RentaBo {
 	}
 
 	public Precios precios(int idSucursal){
-		return PreciosDao.findByidsucursal(idSucursal);
+		SucursalDAO sucursalDao=new SucursalDAO();
+		return sucursalDao.findById(idSucursal).getPrecios();
 	}
 
 }

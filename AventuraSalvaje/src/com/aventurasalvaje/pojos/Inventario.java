@@ -2,12 +2,9 @@ package com.aventurasalvaje.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,8 +17,8 @@ public class Inventario implements java.io.Serializable {
 	// Fields
 
 	private Integer idInventario;
-	private Sucursal sucursal;
-	private ProductoExistencia productoExistencia;
+	private Integer idSucursal;
+	private Integer idExistencia;
 
 	// Constructors
 
@@ -30,9 +27,9 @@ public class Inventario implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Inventario(Sucursal sucursal, ProductoExistencia productoExistencia) {
-		this.sucursal = sucursal;
-		this.productoExistencia = productoExistencia;
+	public Inventario(Integer idSucursal, Integer idExistencia) {
+		this.idSucursal = idSucursal;
+		this.idExistencia = idExistencia;
 	}
 
 	// Property accessors
@@ -47,24 +44,22 @@ public class Inventario implements java.io.Serializable {
 		this.idInventario = idInventario;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idSucursal", nullable = false)
-	public Sucursal getSucursal() {
-		return this.sucursal;
+	@Column(name = "idSucursal", nullable = false)
+	public Integer getIdSucursal() {
+		return this.idSucursal;
 	}
 
-	public void setSucursal(Sucursal sucursal) {
-		this.sucursal = sucursal;
+	public void setIdSucursal(Integer idSucursal) {
+		this.idSucursal = idSucursal;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idExistencia", nullable = false)
-	public ProductoExistencia getProductoExistencia() {
-		return this.productoExistencia;
+	@Column(name = "idExistencia", nullable = false)
+	public Integer getIdExistencia() {
+		return this.idExistencia;
 	}
 
-	public void setProductoExistencia(ProductoExistencia productoExistencia) {
-		this.productoExistencia = productoExistencia;
+	public void setIdExistencia(Integer idExistencia) {
+		this.idExistencia = idExistencia;
 	}
 
 }
