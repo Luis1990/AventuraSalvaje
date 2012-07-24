@@ -15,6 +15,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
@@ -32,7 +33,8 @@ public class ReporteDiaCtrl extends GenericForwardComposer{
 	private Button confirma;
 	private Listbox listaRenta;
 	private Jasperreport jasper;
-	
+	private Datebox calendario;
+	private Button ver;
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
@@ -72,13 +74,21 @@ public class ReporteDiaCtrl extends GenericForwardComposer{
 	
 	public void onClick$confirma(){
 	Window win= (Window) Executions.createComponents("popUpDia.zul", null, null);
-//	win.addEventListener("onConfiguracionModificada", new EventListener() {
-//		@Override
-//		public void onEvent(Event arg0) throws Exception {
-//			cargaUsuarios();
-//		}
-//		
-//	});
+	win.addEventListener("onConfiguracionModificada", new EventListener() {
+		@Override
+		public void onEvent(Event arg0) throws Exception {
+			
+		}
+		
+	});
 	win.doModal();					
 }	
+
+	public void onClick$ver(){
+		System.out.println(calendario.getValue());
+	}
+	
+	
+	
+	
 }

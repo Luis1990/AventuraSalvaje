@@ -10,9 +10,16 @@
 				<listheader label="Fecha Salida" sort="auto" />
 			</listhead>
 		</listbox>
-		
+		<space orient="vertical"></space>
 		<cell align="center">
-				<button id="confirma" label="Generar Reporte"></button>
+				<button id="confirma" label="Generar Reporte" mold="trendy" ></button>
 		</cell>
+		<cell>
+		<datebox id="calendario"  constraint="after 20111225" />
+		</cell>
+		<cell align="center">
+				<button id="ver" label="ver" mold="trendy" ></button>
+		</cell>
+		
 </window>
 </zk>
