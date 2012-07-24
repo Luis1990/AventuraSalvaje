@@ -8,6 +8,8 @@
 				<listheader label="Termino de renta" />
 			</listhead>
 		</listbox>
-		<jasperreport id="jasper"/>
+		<cell align="center">
+				<button id="genera" label="Generar reporte de rentas"></button>
+		</cell>
 </window>
 </zk>

@@ -3,6 +3,7 @@
  */
 package com.aventurasalvaje.reportes;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.aventurasalvaje.pojos.Catalogo;
@@ -17,12 +18,19 @@ public class ReportePDF {
 	Date inic;
 	Date fin;
 	String nombrepro;
-	String calculo;
+	BigDecimal calculo;
+	long diferencia;
 	
-	public String getCalculo() {
+	public long getDiferencia() {
+		return diferencia;
+	}
+	public void setDiferencia(long diferencia) {
+		this.diferencia = diferencia;
+	}
+	public BigDecimal getCalculo() {
 		return calculo;
 	}
-	public void setCalculo(String calculo) {
+	public void setCalculo(BigDecimal calculo) {
 		this.calculo = calculo;
 	}
 	public Date getInic(){

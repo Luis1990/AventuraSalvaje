@@ -6,7 +6,14 @@
 	<field name="nombrepro" class="java.lang.String"/>
 	<field name="inic" class="java.util.Date"/>
 	<field name="fin" class="java.util.Date"/>
-	<field name="calculo" class="java.lang.String"/>
+	<field name="calculo" class="java.math.BigDecimal"/>
+	<field name="diferencia" class="java.lang.Long"/>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{calculo}]]></variableExpression>
+	</variable>
+	<variable name="minutos" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{diferencia}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -22,30 +29,29 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="34" splitType="Stretch">
 			<staticText>
-				<reportElement x="3" y="0" width="139" height="31"/>
+				<reportElement x="3" y="0" width="100" height="31"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="142" y="0" width="152" height="31"/>
+				<reportElement x="220" y="0" width="117" height="31"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Fecha y hora de inicio]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="294" y="0" width="161" height="31"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[Fecha y hora de termino]]></text>
+				<text><![CDATA[Fecha final]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="455" y="0" width="100" height="31"/>
@@ -54,39 +60,69 @@
 				</textElement>
 				<text><![CDATA[Cobro]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="337" y="0" width="118" height="31"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Tiempo de uso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="0" width="117" height="31"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Fecha inicial]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement x="3" y="0" width="139" height="20"/>
+				<reportElement x="3" y="0" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombrepro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="1" width="152" height="20"/>
+				<reportElement x="103" y="1" width="117" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.util.Date"><![CDATA[$F{inic}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="294" y="1" width="161" height="20"/>
+				<reportElement x="455" y="1" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.util.Date"><![CDATA[$F{fin}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["$"+$F{calculo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="1" width="83" height="20"/>
+				<reportElement x="337" y="0" width="118" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{calculo}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{diferencia}+" minutos"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="117" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fin}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="21" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="20" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["$"+$V{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="0" width="118" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{minutos}+" minutos"]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>
