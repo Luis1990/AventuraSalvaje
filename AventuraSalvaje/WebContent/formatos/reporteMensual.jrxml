@@ -117,12 +117,12 @@
 		<band height="47" splitType="Stretch">
 			<textField>
 				<reportElement x="455" y="20" width="100" height="20"/>
-				<textElement textAlignment="Center"/>
+				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA["$"+$V{total}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="337" y="20" width="118" height="20"/>
-				<textElement textAlignment="Center"/>
+				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{minutos}+" minutos"]]></textFieldExpression>
 			</textField>
 			<staticText>
