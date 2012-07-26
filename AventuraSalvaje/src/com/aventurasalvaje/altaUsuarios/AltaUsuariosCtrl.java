@@ -174,10 +174,16 @@ public class AltaUsuariosCtrl extends GenericForwardComposer {
 				Usuario usuario=item.getValue();
 				Textbox textUsuario=(Textbox) item.getChildren().get(1).getFirstChild();
 				Textbox textPassword=(Textbox)item.getChildren().get(2).getFirstChild();
+				String usu=textUsuario.getValue();
+				String pass=textPassword.getValue();
+				if (usu.isEmpty() || pass.isEmpty() ){
+					alert("Nombre  y/o  Password  no tienen nada escrito ");	
+					}
+				else{
 				usuario.setPassword(textPassword.getValue());
 				usuario.setUsuario(textUsuario.getValue());
 				usuariosCambio.add(usuario);
-
+				}
 			}
 		}
 		altausuarioBO.Update(usuariosCambio);
@@ -186,9 +192,6 @@ public class AltaUsuariosCtrl extends GenericForwardComposer {
 
 		cargaUsuarios();
 	}
-
-
-
 	@SuppressWarnings("unchecked")
 	public void onClick$nuevo(){
 		Window win= (Window) Executions.createComponents("popUpAgregar.zul", null, null);
@@ -197,11 +200,9 @@ public class AltaUsuariosCtrl extends GenericForwardComposer {
 			@Override
 			public void onEvent(Event arg0) throws Exception {
 				cargaUsuarios();
-			}
-			
+			}		
 		});
 		win.doModal();
 		//agregar.open(agregar);					
 	}
-
 }

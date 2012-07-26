@@ -70,6 +70,7 @@ public class PararCtrl extends GenericForwardComposer {
 		horalabel(inicialHora);
 		HoraI.setValue(horalabel(inicialHora));
 		Calendar finalHora=Calendar.getInstance();
+		
 		long hor1 = inicialHora.getTimeInMillis();
 		long hor2 = finalHora.getTimeInMillis();
 		long diff=hor2-hor1;

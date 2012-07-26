@@ -27,13 +27,20 @@ public class NuevaWindowCtrl  extends GenericForwardComposer{
 
 	public void onClick$confirma(){
 		String nombre=usuario_nom.getValue();
+		
 		String password=usuario_pass.getValue();
+		
+		if (nombre =="" || password=="" ){
+			alert("Nombre  y/o  Password  no tienen nada escrito ");	
+			}
+		
+		else{
 		altausuarioBO.save(nombre,password,idsucursal);
-		usuario_nom.setText("");
-		usuario_pass.setText("");
+		usuario_nom.setValue("");
+		usuario_pass.setValue("");
 		Events.postEvent("onConfiguracionModificada", nuevaWindow, null);
 		nuevaWindow.detach();
-		
+		}//fn else 
 	}
 	
 	public void onClick$cancelar(){

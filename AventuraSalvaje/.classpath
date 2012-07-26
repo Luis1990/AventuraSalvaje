@@ -16,6 +16,12 @@
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.hibernate.MYECLIPSE_HIBERNATE3_3_CORE"/>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.hibernate.MYECLIPSE_HIBERNATE3_3_EXTRAS"/>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.hibernate.MYECLIPSE_HIBERNATE3_3_EM"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.20-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/MySQL Connector J/mysql-connector-java-5.1.20-bin.jar"/>
+	<classpathentry kind="lib" path="C:/lib/commons-beanutils-1.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="C:/lib/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="C:/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="C:/lib/itext.jar"/>
+	<classpathentry kind="lib" path="C:/lib/jasperreports.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

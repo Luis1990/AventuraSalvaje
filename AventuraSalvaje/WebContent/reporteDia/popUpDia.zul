@@ -1,9 +1,9 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window id="nuevoDia" title="Reporte Del Dia" border="normal" apply= "com.aventurasalvaje.reportes.popUpDiaCtrl" height="800" width="800" >
-<jasperreport id="reporte" />
-			<cell align="center">
-				<button id="cancelar" label="Cancelar"></button>
-			</cell>
-</window>
+	<window id="nuevoDia" title="Reporte Del Dia" border="none"
+		apply="com.aventurasalvaje.reportes.popUpDiaCtrl" maximizable="true"
+		closable="true" position="center" width="650px" height="650px"
+		contentStyle="background:black">
+		<jasperreport id="reporte" />
+	</window>
 </zk>

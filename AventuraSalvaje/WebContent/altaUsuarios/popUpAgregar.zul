@@ -1,8 +1,9 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window id="nuevaWindow" title="Nuevo Usuario" border="normal" 
-	apply= "com.aventurasalvaje.altaUsuarios.NuevaWindowCtrl"
-	 height="200px"	width="300px">
+	<window id="nuevaWindow" title="Nuevo Usuario" border="none"
+		apply="com.aventurasalvaje.altaUsuarios.NuevaWindowCtrl"
+		height="200px" width="300px" closable="true">
+
 		<vbox>
 			<cell>
 				<hbox>
@@ -27,12 +28,13 @@
 					</hbox>
 				</vbox>
 			</cell>
-			<space orient="vertical" />
 			<cell align="center">
-				<button id="confirma" label="Aceptar"></button>
-			</cell>
-			<cell align="center">
-				<button id="cancelar" label="Cancelar"></button>
+				<button id="confirma" label="Aceptar" mold="trendy"
+					image="/estilos/yes.gif" width="125px">
+				</button>
+				<button id="cancelar" label="Cancelar" mold="trendy"
+					image="/estilos/close.gif" width="125px">
+				</button>
 			</cell>
 		</vbox>
 	</window>
