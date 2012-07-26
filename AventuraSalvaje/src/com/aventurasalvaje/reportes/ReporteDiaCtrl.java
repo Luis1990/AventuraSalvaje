@@ -39,13 +39,13 @@ public class ReporteDiaCtrl extends GenericForwardComposer{
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		reportediaBo = new ReporteDiaBo();	
-		//reportediaBo.fechas();
+		reportediaBo.fechasF();
 		cargaLista();
 	}
 
 	private void cargaLista() {
 		
-		List <Renta> rentas =reportediaBo.fechas();
+		List <Renta> rentas =reportediaBo.fechasF();
 		ListModelList model = new ListModelList(rentas);
 		listaRenta.setModel(model);
 		listaRenta.setItemRenderer(new ListitemRenderer() {
@@ -73,19 +73,17 @@ public class ReporteDiaCtrl extends GenericForwardComposer{
 	}
 	
 	public void onClick$confirma(){
-	Window win= (Window) Executions.createComponents("popUpDia.zul", null, null);
-	win.addEventListener("onConfiguracionModificada", new EventListener() {
-		@Override
-		public void onEvent(Event arg0) throws Exception {
-			
-		}
 		
-	});
-	win.doModal();					
+		Map<String , Object> args= new HashMap<String, Object>();
+		args.put("fecha",calendario.getValue());
+
+		Window win= (Window) Executions.createComponents("popUpDia.zul", null, args);
+						
 }	
 
 	public void onClick$ver(){
 		System.out.println(calendario.getValue());
+
 	}
 	
 	

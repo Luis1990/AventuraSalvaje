@@ -2,7 +2,7 @@
 <zk>
 
 	<div>
-		<window title="" border="normal" width="800"
+		<window title="Lili" border="normal" width="800"
 			apply="com.aventurasalvaje.productolista.ListaCtrl">
 			<listbox id="listaproducto" checkmark="true"
 				multiple="true">

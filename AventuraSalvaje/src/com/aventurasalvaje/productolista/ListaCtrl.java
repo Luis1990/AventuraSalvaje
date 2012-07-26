@@ -2,14 +2,11 @@ package com.aventurasalvaje.productolista;
 
 import java.util.List;
 
-
-
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
-import org.zkoss.zul.Combobox;
-import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
@@ -18,7 +15,6 @@ import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Window;
 
-import com.aventurasalvaje.pojos.Catalogo;
 import com.aventurasalvaje.pojos.ProductoExistencia;
 
 public class ListaCtrl extends GenericForwardComposer{
@@ -35,6 +31,11 @@ public class ListaCtrl extends GenericForwardComposer{
 
 		listabo= new ListaBo();
 
+		recarga();
+
+	}
+
+	private void recarga() {
 		List<ProductoExistencia> lista=listabo.getProductoExistencias();
 
 		ListModelList model= new ListModelList(lista);
@@ -63,15 +64,38 @@ public class ListaCtrl extends GenericForwardComposer{
 
 			}				
 		});
-
 	}
 
+	@SuppressWarnings("unchecked")
 	public void onClick$nuevo(){
 		Window win= (Window) Executions.createComponents("popUpLista.zul", null, null);
+		win.addEventListener("onConfiguracionModificada", new EventListener() {
+
+			@Override
+			public void onEvent(Event arg0) throws Exception {
+				recarga();
+			}
+			
+		});
 		win.doModal();
 		
 	}
 
+	
+	public void onClick$eliminar(){
+		List hijo=listaproducto.getChildren();
+		for (Object object : hijo) {
+			if(object instanceof Listitem){
+				Listitem item=(Listitem) object;
+				if(item.isSelected()){
+					ProductoExistencia producto=item.getValue();
+					listabo.dellete(producto);
+
+				}	
+			}
+		}
+	recarga();
+	}
 
 
 

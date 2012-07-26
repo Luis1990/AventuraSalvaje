@@ -8,8 +8,6 @@ import com.aventurasalvaje.hibernate.HibernateSessionFactory;
 import com.aventurasalvaje.pojos.Sucursal;
 
 public class SucursalDAO {
-
-	
 	
 	public Sucursal findById(Integer idSucursal){
 		Session session= HibernateSessionFactory.getSession();

@@ -5,20 +5,26 @@
 				<cell>
 					<hbox>
 						<cell>
-							<label value="Producto" />
+							 <label value="Producto" />
 						</cell>
 						<space orient="horizontal" />
 						<cell align="right">
 
 							<combobox id="producto_nom" />
-
-
 						</cell>
+						
 					</hbox>
+					</cell>
 					<space orient="vertical" />
-
-				</cell>
-				<space orient="vertical" />
+					
+					<cell>
+					
+					<label value="Descripcion"/> 
+						<textbox id="texto"/>
+										
+					</cell>
+					
+								<space orient="vertical" />
 				<cell align="center">
 					<button id="Alta" label="Aceptar"></button>
 				</cell>

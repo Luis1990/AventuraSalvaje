@@ -12,7 +12,7 @@ public class PreciosDAO {
 	public Precios findByidsucursal(int idsucursal) {
 		Session session=HibernateSessionFactory.getSession();
 		Criteria criteria = session.createCriteria(Precios.class);
-		criteria.add(Restrictions.eq("sucursal.idSucursal", idsucursal));
+		criteria.add(Restrictions.eq("sucursals.idSucursal", idsucursal));
 		return (Precios) criteria.uniqueResult();
 	}
 	

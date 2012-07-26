@@ -4,11 +4,11 @@
 		apply="com.aventurasalvaje.renta.RentaCtrl">
 		<listbox id="listaProducto">
 			<listhead>
-				<listheader label="Imagen" />
-				<listheader label="Nombre" />
-				<listheader label="" />
-				<listheader label="Estado" />
-				<listheader label="" />
+				<listheader label="Imagen" align="center"/>
+				<listheader label="Nombre" align="center"/>
+				<listheader label="" align="center"/>
+				<listheader label="Estado" align="center"/>
+				<listheader label="" align="center"/>
 			</listhead>
 		</listbox>
 	</window>

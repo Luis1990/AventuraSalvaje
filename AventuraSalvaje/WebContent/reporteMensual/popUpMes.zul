@@ -1,0 +1,9 @@
+<?page title="Reporte de rentas del mes" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="reporteMes" title="Reporte Del Mes" border="normal"
+		apply="com.aventurasalvaje.reportes.PopUpMesCtrl" height="800px"
+		width="800px" maximizable="true" minimizable="false" closable="true"
+		position="center">
+		<jasperreport id="jasper" />
+	</window>
+</zk>

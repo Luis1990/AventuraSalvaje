@@ -27,7 +27,6 @@ public class ProductoExitenciaDTO {
 		this.catalogo = producto.getCatalogo();
 		this.descripcionGral = producto.getDescripcionGral();
 		this.rentas = producto.getRentas();
-		this.inventarios = producto.getInventarios();
 	}
 	
 	public Integer getIdProductoExistencia() {

@@ -101,6 +101,7 @@ public class RentaCtrl extends GenericForwardComposer {
 						cambiaVisibilidad(parar,inicio);
 						hora.setValue(getHora());
 						mensaje.setValue("Ocupado");
+						
 						Map<String , Object> args= new HashMap<String, Object>();
 						args.put("nombre", productoNombre);
 						args.put("imagenes", imagenes);

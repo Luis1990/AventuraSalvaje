@@ -8,5 +8,8 @@
 				<listheader label="Termino de renta" />
 			</listhead>
 		</listbox>
+		<cell align="center">
+				<button id="genera" label="Generar reporte de rentas"></button>
+		</cell>
 </window>
 </zk>

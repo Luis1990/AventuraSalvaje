@@ -1,11 +1,16 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
 package com.aventurasalvaje.reportes;
-
-import java.awt.Button;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,71 +20,71 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zkex.zul.Jasperreport;
-import org.zkoss.zul.Datebox;
+import org.zkoss.zul.Button;
+import org.zkoss.zul.Label;
+import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Listcell;
+import org.zkoss.zul.Listitem;
+import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Window;
 
 import com.aventurasalvaje.pojos.Renta;
 import com.aventurasalvaje.renta.RentaBo;
-import com.aventurasalvaje.renta.ReporteMensualBo;
+import com.aventurasalvaje.reportes.ReporteMensualBo;
+/**
+ * @author carlos
+ *
+ */
+public class PopUpMesCtrl extends GenericForwardComposer {
 
-public class popUpDiaCtrl extends GenericForwardComposer {
-	private ReporteDiaBo reportediaBo;
-	private Window nuevoDia;
-	private Jasperreport reporte;
+	private Listbox rentaProductos;
+	private ReporteMensualBo ReporteMensualBo;
 	private RentaBo rentaBo;
-	private Button cancelar;
-	private Datebox calendario;
 	int idSucursal=2;
-	
+	private Window reporteMes;
+	private Jasperreport jasper;	
+	/**
+	 *
+	 *
+	 */
 	@Override
+
 	public void doAfterCompose(Component comp) throws Exception {
-			super.doAfterCompose(comp);
-			
-			Map<String, Object> args = (Map<String, Object>) Executions.getCurrent().getArg();
-			Date fecha= (Date) args.get("fecha");
-			Calendar fechare= Calendar.getInstance();
-			fechare.setTime(fecha);
-			Calendar fechare2 = Calendar.getInstance();
-			fechare2.setTime(fecha);
-			
-			reportediaBo = new ReporteDiaBo();
-			rentaBo=new RentaBo();
-			List <Renta> rentas =reportediaBo.fechas(fechare,fechare2);
-			List<ReportePDFD> newlist=new ArrayList<ReportePDFD>();
-			
-			for(int i=0;i<rentas.size();i++){
-			ReportePDFD objeto = new ReportePDFD();
-		
-			objeto.setNombrepro(rentas.get(i).getProductoExistencia().getCatalogo().getNombreProducto());
-			objeto.setInic(rentas.get(i).getHoraEntrada());
-			objeto.setFin(rentas.get(i).getHoraSalida());
-			Calendar inicio=fechare;
-			inicio.setTime(rentas.get(i).getHoraEntrada());		
-			Calendar fin =fechare;
-			fin.setTime(rentas.get(i).getHoraSalida());
-			objeto.setCalculo(calcula(inicio, fin, rentas.get(i)));
-		    objeto.setDif(diferenciaMin(inicio, fin, rentas.get(i)));
+		super.doAfterCompose(comp);
+		ReporteMensualBo=new ReporteMensualBo();
+		rentaBo=new RentaBo();
+		List<Renta> lista=ReporteMensualBo.mes();
+		List<ReportePDF> newlist=new ArrayList<ReportePDF>();
+		for (int i=0;i<lista.size();i++) {
+			ReportePDF objeto=new ReportePDF();
+			objeto.setNombrepro(lista.get(i).getProductoExistencia().getCatalogo().getNombreProducto());
+			objeto.setInic(lista.get(i).getHoraEntrada());
+			objeto.setFin(lista.get(i).getHoraSalida());
+			Calendar inicio = Calendar.getInstance();
+			inicio.setTime(lista.get(i).getHoraEntrada());
+			Calendar fin = Calendar.getInstance();
+			fin.setTime(lista.get(i).getHoraSalida());
+			objeto.setCalculo(calcula(inicio, fin, lista.get(i)));
+			objeto.setDiferencia(diffMin(inicio, fin,lista.get(i)));
 			newlist.add(objeto);
-			}
-			
-			JRBeanCollectionDataSource base = new JRBeanCollectionDataSource(newlist);
-			String format="pdf";
-			//reporte.setSrc("../formatos/reporteprueba.jasper");
-			reporte.setSrc("/formatos/reporteDiario.jasper");
-			reporte.setDatasource(base);
-			reporte.setType(format);
+		}
+
+		Map<Object, Object> parameters=new HashMap<Object, Object>();
+		JRBeanCollectionDataSource base = new JRBeanCollectionDataSource(newlist);
+		String format="pdf";
+		jasper.setSrc("/formatos/reporteMensual.jasper");
+		jasper.setDatasource(base);
+		jasper.setType(format);
 	}
-	
 	public BigDecimal calcula(Calendar inicialHora,Calendar finalHora, Renta renta){
 		BigDecimal precio;
-		long diffMinutes = diferenciaMin(inicialHora, finalHora, renta);
+		long diffMinutes = diffMin(inicialHora, finalHora, renta);
 		precio=obtener(rentaBo.precios(idSucursal).getCostoTotal(),diffMinutes);
 		precio.setScale(2);
 		return precio;
 	}
-
-	private long diferenciaMin(Calendar inicialHora, Calendar finalHora,
-			Renta renta) {
+	private long diffMin(Calendar inicialHora, Calendar finalHora, Renta renta) {
 		BigDecimal precio=new BigDecimal(0);
 		inicialHora.setTime(renta.getHoraEntrada());
 		finalHora.setTime(renta.getHoraSalida());
@@ -147,8 +152,4 @@ public class popUpDiaCtrl extends GenericForwardComposer {
 		}
 		return valor;
 	}
-
-//	public void onClick$cancelar(){
-	//	nuevoDia.detach();
-//	}
 }
