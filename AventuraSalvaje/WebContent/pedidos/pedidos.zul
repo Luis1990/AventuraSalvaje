@@ -1,0 +1,17 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Animalitos" border="normal"
+		apply="com.aventurasalvaje.pedidos.PedidosCtrl">
+		<listbox id="listadeanimales">
+			<listhead>
+				<listheader label="Animalitos" sort="auto" />
+				<listheader label="Descripcion" sort="auto" />
+				<listheader label="Cantidad" sort="auto" />
+			</listhead>
+		</listbox>
+		<cell>
+			<space orient="vertical" width="40px" />
+			<button id="enviar" label="Enviar Pedido" mold="trendy" />
+		</cell>
+	</window>
+</zk>
