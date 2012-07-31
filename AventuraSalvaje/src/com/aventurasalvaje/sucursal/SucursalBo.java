@@ -23,6 +23,10 @@ public class SucursalBo {
 		sucursal.setDireccion(direccion);
 		sucursal.setIdSucursal(idusuario);
 		sucursaldao.save(sucursal);
-
 	}
+	
+	public  Sucursal findsucursal (int usuario ){
+		return sucursaldao.findsucursal(usuario);
+	}
+	
 }

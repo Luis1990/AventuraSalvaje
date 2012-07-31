@@ -9,6 +9,8 @@ import org.zkoss.zul.Button;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.Textbox;
 
+import com.aventurasalvaje.pojos.Sucursal;
+
 /**
  * @author SDGA
  *
@@ -16,7 +18,7 @@ import org.zkoss.zul.Textbox;
 public class SucursalCtrl extends GenericForwardComposer {
 
 	private int  idUsuario=15;
-
+	
 	private Button aceptar;
 	private Textbox textdireccion;
 	private Textbox textcorreo;
@@ -31,10 +33,11 @@ public class SucursalCtrl extends GenericForwardComposer {
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		sucursalBo = new SucursalBo();
-
+	
 	}
 
 	public void onClick$aceptar(){
+	
 		
 		String direccion = textdireccion.getValue();
 		String correo=textcorreo.getValue();
