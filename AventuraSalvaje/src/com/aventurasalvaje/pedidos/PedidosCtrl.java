@@ -18,7 +18,9 @@ import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Textbox;
 
 import com.aventurasalvaje.pojos.ProductoExistencia;
+import com.aventurasalvaje.pojos.Sucursal;
 import com.aventurasalvaje.pojos.Usuario;
+import com.aventurasalvaje.sucursal.SucursalBo;
 
 /**
  * @author SDGA
@@ -26,8 +28,11 @@ import com.aventurasalvaje.pojos.Usuario;
  */
 public class PedidosCtrl extends GenericForwardComposer {
 
+	private int idSucursal=2;
+	
 	private Listbox listadeanimales;
 	private PedidosBo pedidoBo;
+	private SucursalBo sucursalBo;
 //	private envioPedido enviar;
 	private prueba pru;
 	/**
@@ -37,17 +42,12 @@ public class PedidosCtrl extends GenericForwardComposer {
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
+		sucursalBo = new SucursalBo();
 		
 		pedidoBo = new PedidosBo();
- 
-			
 		List<ProductoExistencia> listaped=pedidoBo.getListapedido();
-
 		ListModelList model=new ListModelList(listaped);
-		
-		
 		listadeanimales.setModel(model);
-
 		listadeanimales.setItemRenderer(new ListitemRenderer() {
 
 			@Override
@@ -57,7 +57,6 @@ public class PedidosCtrl extends GenericForwardComposer {
 				final ProductoExistencia listaped=(ProductoExistencia) data;
 
 				item.setValue(listaped);
-
 
 				Listcell cell0=new Listcell();
 				Listcell cell1=new Listcell();
@@ -72,7 +71,6 @@ public class PedidosCtrl extends GenericForwardComposer {
 				cell1.setParent(item);
 				cell2.setParent(item);
 			}
-
 		});
 	}
 
@@ -86,10 +84,19 @@ public class PedidosCtrl extends GenericForwardComposer {
 //			e.printStackTrace();
 //		}
 		
-		String mensaje="";
+		
+		
+		Sucursal comSucursal = sucursalBo.findsucursal(idSucursal);
+		
+		String usu=comSucursal.getNombre();
+		String direc=comSucursal.getDireccion();
+		long tel=comSucursal.getTelefono();
+		String correo=comSucursal.getContacto();
+		String mensaje="Usuario:\t"+usu+"\n"+"Direccion:\t"+direc+"\n Telefono de la sucursal:\t"+tel+"\n Correo del contacto:\t"+correo+"\n\n\n";
 		
 		List<Usuario> usuariosCambio = new ArrayList<Usuario>();
 
+		
 		List hijo=listadeanimales.getChildren();
 		for (Object object : hijo) {
 			if(object instanceof Listitem){
@@ -100,14 +107,16 @@ public class PedidosCtrl extends GenericForwardComposer {
 				Label labeldescripcion=(Label)item.getChildren().get(1).getFirstChild();
 				Label labelanimal=(Label)item.getChildren().get(0).getFirstChild();
 
+				
 				if(textcantidad.getValue()!=0){
 				
-				resultado=labelanimal.getValue()+labeldescripcion.getValue()+textcantidad.getValue()+"\n";
+				resultado="Animal:\t"+labelanimal.getValue()+"\t"+"Descripcion:\t"+labeldescripcion.getValue()+"\t Cantidad: \t"+textcantidad.getValue()+"\n";
 				mensaje=mensaje+resultado;
 				}
 				
 			}
 		}
+					
 	pru = new prueba("akilesdaniel2311@gmail.com",mensaje);
 	}
 }
