@@ -1,0 +1,50 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Alta de Sucursal" border="normal" apply="com.aventurasalvaje.sucursal.SucursalCtrl" >
+		<hbox>
+			<cell width="200px" height="50px">
+				<space orient="vertical" width="40px" />
+				<label value="Nombre del contacto" />
+				<cell align="center">
+					<space orient="vertical" width="20px" />
+					<textbox id="textnombre" value="" />
+				</cell>
+			</cell>
+		</hbox>
+		<hbox>
+			<cell width="200px" height="50px">
+				<space orient="vertical" width="40px" />
+				<label value="Telefono del contacto" />
+				<cell>
+					<space orient="vertical" width="20px" />
+					<intbox  id="texttelefono" />
+				</cell>
+			</cell>
+		</hbox>
+		<hbox>
+			<cell width="200px" height="50px">
+				<space orient="vertical" width="40px" />
+				<label value="Correo del contaco" />
+				<cell>
+					<space orient="vertical" width="20px" />
+					<textbox id="textcorreo" value="" />
+				</cell>
+			</cell>
+		</hbox>
+		<hbox>
+			<cell width="200px" height="50px" align="center">
+				<label value="Direccion de la sucursal" />
+				<cell align="center">
+					<space orient="vertical" width="20px" />
+					<textbox id="textdireccion" value="" width="300px" />
+				</cell>
+			</cell>
+		</hbox>
+		<hbox>
+			<space orient="horizontal" width="250px" />
+			<cell width="200px" height="50px">
+				<button id="aceptar" label="Aceptar" mold="trendy" />
+			</cell>
+		</hbox>
+	</window>
+</zk>
