@@ -1,6 +1,7 @@
 package com.aventurasalvaje.pojos;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -26,7 +27,7 @@ public class Precios implements java.io.Serializable {
 	private Integer idSucursal;
 	private String costoTotal;
 	private Long costoExtra;
-	private Timestamp fechaVigencia;
+	private Date fechaVigencia;
 	private Set<Sucursal> sucursals = new HashSet<Sucursal>(0);
 
 	// Constructors
@@ -90,11 +91,11 @@ public class Precios implements java.io.Serializable {
 	}
 
 	@Column(name = "fecha_vigencia", nullable = false, length = 19)
-	public Timestamp getFechaVigencia() {
+	public Date getFechaVigencia() {
 		return this.fechaVigencia;
 	}
 
-	public void setFechaVigencia(Timestamp fechaVigencia) {
+	public void setFechaVigencia(Date fechaVigencia) {
 		this.fechaVigencia = fechaVigencia;
 	}
 

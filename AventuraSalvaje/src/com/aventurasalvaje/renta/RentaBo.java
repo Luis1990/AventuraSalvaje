@@ -35,7 +35,7 @@ public class RentaBo {
 	}
 
 	public void Save(Integer idproducto,Calendar inicio){
-		RentaDAO rentaDao=new RentaDAO();
+		//RentaDAO rentaDao=new RentaDAO();
 		Renta renta=new Renta();
 		//renta.setHoraEntrada(inicio.getTime());
 		inicio.set(inicio.get(Calendar.YEAR),
@@ -44,7 +44,6 @@ public class RentaBo {
 		inicio.get(Calendar.HOUR_OF_DAY), 
 		inicio.get(Calendar.MINUTE), 
 		inicio.getActualMinimum(Calendar.SECOND));
-		System.out.println(inicio.getTime());
 		renta.setHoraEntrada(inicio.getTime());
 		renta.setProductoExistencia(productoexistenciaDao.findByid(idproducto));
 		rentaDao.save(renta);

@@ -18,6 +18,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zkex.zul.Jasperreport;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
@@ -40,6 +41,7 @@ public class ReporteMensualCtrl extends GenericForwardComposer {
 	private Jasperreport jasper;
 	private RentaBo rentaBo;
 	private Button genera;
+	private Datebox calendario;
 	int idSucursal=2;
 	
 	/**
@@ -51,41 +53,11 @@ public class ReporteMensualCtrl extends GenericForwardComposer {
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		ReporteMensualBo=new ReporteMensualBo();
-		rentaBo=new RentaBo();
-		List<Renta> lista=ReporteMensualBo.mes();
-		List<ReportePDF> newlist=new ArrayList<ReportePDF>();
-		for (int i=0;i<lista.size();i++) {
-			ReportePDF objeto=new ReportePDF();
-			objeto.setNombrepro(lista.get(i).getProductoExistencia().getCatalogo().getNombreProducto());
-			objeto.setInic(lista.get(i).getHoraEntrada());
-			objeto.setFin(lista.get(i).getHoraSalida());
-			newlist.add(objeto);
-		}
-		ListModelList model=new ListModelList(lista);
-		rentaProductos.setModel(model);
-		rentaProductos.setItemRenderer(new ListitemRenderer()
-		{
-			@Override
-			public void render(Listitem item, Object data, int arg2)
-			throws Exception {
-				final Renta renta=(Renta) data;
-				item.setValue(renta);
-				Listcell cell0=new Listcell();
-				Listcell cell1=new Listcell();
-				Listcell cell2=new Listcell();
-				new Label(renta.getProductoExistencia().getCatalogo().getNombreProducto()).setParent(cell0);
-				String horaEmpieza=""+renta.getHoraEntrada();
-				String horaAcaba=""+renta.getHoraSalida();
-				new Label(horaEmpieza).setParent(cell1);
-				new Label(horaAcaba).setParent(cell2);
-				cell0.setParent(item);
-				cell1.setParent(item);
-				cell2.setParent(item);
-			}
-		});
 	}
 	public void onClick$genera(){
-		Window win= (Window) Executions.createComponents("popUpMes.zul", null, null);
+		Map<String , Object> args= new HashMap<String, Object>();
+		args.put("fecha",calendario.getValue());
+		Window win= (Window) Executions.createComponents("popUpMes.zul", null, args);
 		win.doModal();
 	}
 }

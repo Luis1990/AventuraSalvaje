@@ -1,0 +1,88 @@
+<?page title="Ingreso de precios" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Precios" border="normal"
+		apply="com.aventurasalvaje.precios.AltaPreciosCtrl">
+		<vbox>
+			<cell>
+				<hbox>
+					<cell width="150px" height="30px" align="center">
+						<label value="Precio por 5 minutos" />
+					</cell>
+					<cell width="150px" height="30px" align="center">
+						<spinner id="precio1"
+							constraint="no negative,no zero" />
+					</cell>
+				</hbox>
+			</cell>
+			<cell>
+				<hbox>
+					<cell width="150px" height="30px" align="center">
+						<label value="Precio por 10 minutos" />
+					</cell>
+					<cell width="150px" height="30px" align="center">
+						<spinner id="precio2"
+							constraint="no negative,no zero" />
+					</cell>
+				</hbox>
+			</cell>
+			<cell>
+				<hbox>
+					<cell width="150px" height="30px" align="center">
+						<label value="Precio por 15 minutos" />
+					</cell>
+					<cell width="150px" height="30px" align="center">
+						<spinner id="precio3"
+							constraint="no negative,no zero" />
+					</cell>
+				</hbox>
+			</cell>
+			<cell>
+				<hbox>
+					<cell width="150px" height="30px" align="center">
+						<label value="Precio por 20 minutos" />
+					</cell>
+					<cell width="150px" height="30px" align="center">
+						<spinner id="precio4"
+							constraint="no negative,no zero" />
+					</cell>
+				</hbox>
+			</cell>
+			<cell>
+				<hbox>
+					<cell width="150px" height="30px" align="center">
+						<label value="Precio por 30 minutos" />
+					</cell>
+					<cell width="150px" height="30px" align="center">
+						<spinner id="precio5"
+							constraint="no negative,no zero" />
+					</cell>
+				</hbox>
+			</cell>
+			<cell>
+				<hbox>
+					<cell width="150px" height="30px" align="center">
+						<label value="Precio por 60 minutos" />
+					</cell>
+					<cell width="150px" height="30px" align="center">
+						<spinner id="precio6"
+							constraint="no negative,no zero" />
+					</cell>
+				</hbox>
+			</cell>
+			<cell>
+				<hbox>
+					<cell width="150px" height="30px" align="center">
+						<label value="Precio por minuto extra" />
+					</cell>
+					<cell width="150px" height="30px" align="center">
+						<spinner id="precio7"
+							constraint="no negative,no zero" />
+					</cell>
+				</hbox>
+			</cell>
+			<cell align="center">
+				<button id="confirma" label="Confirmar"></button>
+			</cell>
+		</vbox>
+	</window>
+</zk>

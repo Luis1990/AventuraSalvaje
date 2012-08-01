@@ -20,18 +20,11 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zkex.zul.Jasperreport;
-import org.zkoss.zul.Button;
-import org.zkoss.zul.Label;
-import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listcell;
-import org.zkoss.zul.Listitem;
-import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Window;
 
 import com.aventurasalvaje.pojos.Renta;
 import com.aventurasalvaje.renta.RentaBo;
-import com.aventurasalvaje.reportes.ReporteMensualBo;
 /**
  * @author carlos
  *
@@ -52,21 +45,29 @@ public class PopUpMesCtrl extends GenericForwardComposer {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
+		
+		Map<String, Object> args = (Map<String, Object>) Executions.getCurrent().getArg();
+		Date fecha= (Date) args.get("fecha");
+		Calendar fechare= Calendar.getInstance();
+		fechare.setTime(fecha);
+		
 		ReporteMensualBo=new ReporteMensualBo();
 		rentaBo=new RentaBo();
 		List<Renta> lista=ReporteMensualBo.mes();
+		List <Renta> rentas =ReporteMensualBo.fechas(fechare);
 		List<ReportePDF> newlist=new ArrayList<ReportePDF>();
-		for (int i=0;i<lista.size();i++) {
+		
+		for (int i=0;i<rentas.size();i++) {
 			ReportePDF objeto=new ReportePDF();
-			objeto.setNombrepro(lista.get(i).getProductoExistencia().getCatalogo().getNombreProducto());
-			objeto.setInic(lista.get(i).getHoraEntrada());
-			objeto.setFin(lista.get(i).getHoraSalida());
+			objeto.setNombrepro(rentas.get(i).getProductoExistencia().getCatalogo().getNombreProducto());
+			objeto.setInic(rentas.get(i).getHoraEntrada());
+			objeto.setFin(rentas.get(i).getHoraSalida());
 			Calendar inicio = Calendar.getInstance();
-			inicio.setTime(lista.get(i).getHoraEntrada());
+			inicio.setTime(rentas.get(i).getHoraEntrada());
 			Calendar fin = Calendar.getInstance();
-			fin.setTime(lista.get(i).getHoraSalida());
-			objeto.setCalculo(calcula(inicio, fin, lista.get(i)));
-			objeto.setDiferencia(diffMin(inicio, fin,lista.get(i)));
+			fin.setTime(rentas.get(i).getHoraSalida());
+			objeto.setCalculo(calcula(inicio, fin, rentas.get(i)));
+			objeto.setDiferencia(diffMin(inicio, fin,rentas.get(i)));
 			newlist.add(objeto);
 		}
 

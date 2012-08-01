@@ -11,5 +11,8 @@
 		<cell align="center">
 				<button id="genera" label="Generar reporte de rentas"></button>
 		</cell>
+		<cell>
+		<datebox id="calendario"  constraint="after 20120101" />
+		</cell>
 </window>
 </zk>

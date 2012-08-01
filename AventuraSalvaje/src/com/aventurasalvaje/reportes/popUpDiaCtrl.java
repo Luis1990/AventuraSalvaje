@@ -20,7 +20,6 @@ import org.zkoss.zul.Window;
 
 import com.aventurasalvaje.pojos.Renta;
 import com.aventurasalvaje.renta.RentaBo;
-import com.aventurasalvaje.renta.ReporteMensualBo;
 
 public class popUpDiaCtrl extends GenericForwardComposer {
 	private ReporteDiaBo reportediaBo;
